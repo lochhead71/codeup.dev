@@ -1,0 +1,53 @@
+header {
+	padding: 0px 0px 10px 25px;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+div	{
+	float:left;
+	border: 1px solid black;
+	width: 50px;
+	height: 50px;
+	padding: 10px;
+	margin: 25px;
+	font-weight: 600;
+	color: #FFF;
+}
+
+div::after {
+	content: url(/img/codeup-arrow.png);
+	position: relative;
+	bottom: 80px;
+	left: 40px;
+}
+
+div:nth-child(3n+2) {
+	clear: left;
+}
+
+.red {
+	background-color: #F00;
+}
+
+.orange {
+	background-color: #FFA500;
+}
+
+.yellow {
+	background-color: #FF0;
+}
+
+.green {
+	background-color: #008000;
+}
+
+.blue {
+	background-color: #00F;
+}
+
+.violet {
+	background-color: #EE82EE;
+}

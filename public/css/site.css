@@ -1,0 +1,94 @@
+/* CSS comment = Command+"/" */
+
+h1 {
+	color: #2C5094;
+	font-family: 'Poiret One', cursive;
+	font-size: 3em
+
+}
+
+h2 {
+    color: oldlace;
+    height: 36px;
+	font-family: 'Poiret One', cursive;
+    font-size: 24px;
+    background-color: peru;
+    text-indent: 12px;
+    padding-bottom: 4px;
+}
+
+body {
+    background-color: oldlace;
+    font-family: sans-serif;
+}
+
+table tr {
+    background-color: #2C5094;
+    font-size: 1.5em;
+	color: azure;
+
+}
+
+table td {
+	padding-top: 12px;
+    padding-right: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    min-width: 40px;
+}
+
+nav  > ul > li{
+	display: inline;
+	color: azure;
+	font-weight: bolder;
+}
+
+a:link {
+	background-color: darkblue;
+	padding-top: 6px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    text-decoration: none;
+}
+
+a:visited {
+	color:#07E7F7;
+}
+
+a:hover {
+	background-color: deepskyblue;
+	color: floralwhite;
+}
+
+a:active {
+	background-color: blue;
+	color: greenyellow;
+}
+
+.user_login {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.create_account {
+    color: peru;
+}
+
+.food {
+	list-style: url(/img/cpg-foods-icon.png);
+	font-size: 1.5em
+}
+
+section.quote {
+	background-image: url(/img/harbaugh.jpg);
+	height: 500px;
+	color: #FFF;
+	font-size: 2em;
+
+
+
+
+
+
+}

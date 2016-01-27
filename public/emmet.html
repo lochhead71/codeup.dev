@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+ body {
+ color:white;
+ font-size:14px;
+ }
+ .contact {
+    text-align:center;
+    background: none repeat scroll 0% 0% #8FBF73;
+    padding: 20px 10px;
+    box-shadow: 1px 2px 1px #8FBF73;
+    border-radius: 10px;
+    width:510px;
+ }
+ #number {
+    width: 250px;
+    margin-bottom: 15px;
+    background: none repeat scroll 0% 0% #AFCF9C;
+    border: 1px solid #91B57C;
+    height: 30px;
+    color: #808080;
+    border-radius: 8px;
+    box-shadow: 1px 2px 3px;
+    padding: 3px 4px;
+}
+#submit
+{
+    background:none repeat scroll 0% 0% #8FCB73;
+    display: inline-block;
+    padding: 5px 10px;
+    line-height: 1.05em;
+    box-shadow: 1px 2px 3px #8FCB73;
+    border-radius: 8px;
+    border: 1px solid #8FCB73;
+    text-decoration: none;
+    opacity: 0.9;
+    cursor: pointer;
+    color:white;
+}
+#er {
+    color: #F00;
+    text-align: center;
+    margin: 10px 0px;
+    font-size: 17px;
+}
+</style>
+</head>
+<body>
+<div class="contact">
+  <h1>Fibonacci series in PHP</h1>
+  <form action="#" method="POST">
+    Enter number : <input type="text" name="number" id="number" /></br>
+    <input  type="submit" name="submit" id="submit" value="Submit"></input>
+  </form>
+
+  <?php
+   if(isset($_POST['submit'])) {
+     $n = $_POST['number'];
+    
+     function fibonacci_series($a) {
+       $f1 = -1;
+       $f2 = 1;
+
+       for ($i = 1; $i <= $a; $i++) {
+        $f = $f1 + $f2;
+        $f1 = $f2;
+        $f2 = $f;
+        echo "$f<br />"; 
+       }
+     }
+  
+    echo "Fibonacci series of $n is:<br />";
+    echo fibonacci_series($n);
+
+   }
+
+
+  ?>
+</div>
+</body>   
+</html>

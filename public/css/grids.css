@@ -1,0 +1,11 @@
+.demo > * {
+	padding: 12px;
+}
+
+.left {
+	background-color: bisque;
+}
+
+.right {
+	background-color: beige;
+}
