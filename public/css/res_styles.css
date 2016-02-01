@@ -1,0 +1,107 @@
+/*Color Theme:
+Dark Blue: #232940;
+Turquoise: #3E706F;
+Olive: #535B31;
+Lichen: #BAC174;
+Cream: #F3EDDC;
+*/
+
+"use strict";
+
+body {
+	background-color: #F3EDDC;
+}
+
+nav {
+	font-family: 'Dosis', sans-serif;
+	/*weights: 200 xtra-light - 400 - 600 - 800 xtra-bold*/
+	color: #F3EDDC;
+	vertical-align: baseline;
+
+}
+
+.navbar {
+	background-color: #535B31;
+	color: #F3EDDC;
+
+}
+
+.navbar-default {
+	color: #F3EDDC;	
+}
+
+.navbar-default .navbar-brand {
+	color: #BAC174;
+}
+.navbar-header > a:hover {
+	color: #F3EDDC;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #F3EDDC;
+	font-weight: 600px;
+
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #BAC174;
+}
+
+.navbar-default .navbar-nav > .active > a {
+	color: #3E706F;
+	background-color: #F3EDDC;
+	border-top-left-radius: 36px;
+	border-top-right-radius: 6px;
+
+}
+
+.navbar-default .navbar-nav > .active > a:hover {
+	color: #BAC174;
+	background-color: #F3EDDC;
+
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	color: #3E706F;
+	background-color: #BAC174;
+	font-weight: 700px;	
+}
+
+.jumbotron {
+	background-image: url(/resume/img/pipes-gray-1kpx.jpg);
+	color: #fff;
+}
+
+.jumbotron p {
+	font-size: 1.25em;
+}
+
+.btn-primary {
+	background-color: #232940;
+	border-color: #232940;
+}
+
+.row h3 {
+	font-family: 'Dosis', sans-serif;
+	font-size: 1.375em;
+	font-weight: 200px;
+	color: #535B31;
+	margin-bottom: 1px;
+}
+
+.row h4 {
+	font-family: 'Dosis', sans-serif;
+	font-size: 1em;
+	color: #232940;
+	font-weight: 600;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+.col-xs-6 p {
+	font-size: 0.8em;
+}
+
+#date {
+	color:  #BAC174;
+}

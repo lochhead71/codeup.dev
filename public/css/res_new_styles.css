@@ -1,0 +1,38 @@
+/*Color Theme:
+Dark Blue: #232940;
+Turquoise: #3E706F;
+Olive: #535B31;
+Lichen: #BAC174;
+Cream: #F3EDDC;
+*/
+
+"use strict";
+
+body {
+	background-color: #F3EDDC;
+}
+
+nav {
+	font-family: 'Dosis', sans-serif;
+	/*weights: 200 xtra-light - 400 - 600 - 800 xtra-bold*/
+	font-size: 1.25em;
+
+}
+
+.navbar {
+	background-color: #232940;
+
+}
+
+.navbar-default .navbar-brand {
+	color: #BAC174;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #F3EDDC;
+	font-weight: 600px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #BAC174;
+}

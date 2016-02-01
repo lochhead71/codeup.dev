@@ -1,7 +1,3 @@
-.navbar-brand {
-	color: #fff;
-	font-weight: 500;
-}
 
 .jumbotron {
 		background-image: url(/resume/img/pipes-gray-1kpx.jpg);
@@ -33,8 +29,4 @@
 
 #date {
 	color:  rgb(157, 157, 157);
-}
-
-#navbar {
-
 }
