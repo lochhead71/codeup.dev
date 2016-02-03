@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Nested Functions</title>
+</head>
+<body>
+
+
+	<script>
+	"use strict";
+
+		function valNum(n){
+			if (isNaN(n)) {
+				alert("you must use numbers!");
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		function sum(a,b){
+			if (valNum(a) && valNum(b)) {
+				return a + b;
+			}
+		}
+
+		function difference(a,b){
+			if (valNum(a) && valNum(b)) {
+				return a - b;
+			}
+		}
+
+		function product(a,b){
+			if (valNum(a) && valNum(b)) {
+			return a * b;
+			}
+		}
+
+		function quotient(a,b){
+			if (valNum(a) && valNum(b)) {
+			return a / b
+			}
+		}
+
+		function quoRem(a,b){
+			var quo = a / b;
+			var rem = a % b;
+			if (valNum(a) && valNum(b)) {
+			return (parseInt(quo)) + ", " + rem + " remnant"
+			}
+		}
+
+		function quoRem(a,b){
+
+		}
+
+	</script>
+	
+</body>
+</html>

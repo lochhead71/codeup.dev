@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dialogue Funtions</title>
+</head>
+<body>
+	
+
+
+
+
+	<script>
+		"use strict";
+
+		// todo: Ask the user for their name.
+		var response = prompt('What is your name?');
+		if (response != null) {
+			response = response.trim();
+		}
+
+		//       Keep asking if an empty input is provided.
+		while (response == "" || response == null) {
+			response = prompt("Please enter your name :)")
+
+			if (response != null) {
+				response = response.trim();
+			}
+			console.log (response);
+		}
+		// todo: Show an alert message that welcomes the user based on their input.
+				alert('Welcome ' + response);
+		// todo: Ask the user if they like pizza.
+		//       Based on their answer show a creative alert message.
+		if (confirm('Do you like Pizza?')) {
+		    alert('Awesome! Pizza party at your house, right?');
+	    } else {
+	    	console.log ("Whoa! Lame-o alert!");
+	    }
+	</script>
+
+
+
+
+
+
+</body>
+</html>
