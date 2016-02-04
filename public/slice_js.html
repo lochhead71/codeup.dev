@@ -12,8 +12,36 @@
 
 	<script>
 		"use strict";
+
 		var bigTen = ['Michigan','Michigan State','Iowa','Ohio State','Northwestern','Illinois','Indiana','Wisconsin','Purdue','Nebraska','Maryland','Rutgers','Penn State', 'Minnesota']
 		bigTen.sort
+
+
+
+		var colors = ['red', 'blue', 'green', 'yellow', 'brown', 'grey', 'purple', 'yellow', 'orange', 'yellow'];
+
+		console.log(colors);
+
+
+		console.log('How ')
+
+
+		colors.forEach(function(element, index, array) {
+			if (element == "yellow") {
+				array.splice(index, 1);
+			};
+		})
+
+		var indexOfYellow = colors.indexOf("yellow");
+
+		while(indexOfYellow >= 0) {
+			colors.splice(indexOfYellow, 1);
+			indexOfYellow = colors.indexOf("yellow");
+		}
+
+		for (var i = 0; i >= colors.length; i++) {
+			console.log(fruits[i]);s
+		};
 
 
 
