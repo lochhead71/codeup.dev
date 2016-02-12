@@ -68,13 +68,30 @@
 		// var books = [todo];
 
 		// log out the books array
-		console.log(books);
+		// console.log(books);
 
 		books.forEach(function(element, index, array) {
-			console.log(element.title + " was written by " + element.author.firstName + " " + element.author.lastName);
+			console.log("Book #" + (index + 1));
+		    console.log("Title: " + element.title);
+		    console.log("Author: " + element.author.firstName + " " + element.author.lastName);
+		    if (index < array.length -1) {
+		    	console.log("---");
+		    }
 		});
 
+		var arrayOfStrings = [];
 
+		books.forEach(function(element,index,array) {
+			var string = element.title + " was written by " + element.author.firstName + " " + element.author.lastName
+			// console.log (string)
+
+			arrayOfStrings.push(string);
+
+		});
+
+		arrayOfStrings.forEach(function(element,index,array) {
+			console.log(element)
+		});
 
 
 	</script>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM: Query and Modify</title>
+</head>
+<body>
+    <h1 id="main-header">Hello World!</h1>
+    <ul>
+        <li data-dbid="1">Item 1</li>
+        <li data-dbid="2">Item 2</li>
+        <li data-dbid="3">Item 3</li>
+        <li data-dbid="4">Item 4</li>
+        <li data-dbid="5">Item 5</li>
+    </ul>
+    <h2 id="sub-header">Hello Again.</h2>
+    <p class="sub-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+        culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+
+    <button id = "button1">Change Main Header</button>
+    <button id = "button2">Change Subhead Color</button>
+    <button id = "button3">Highlight List Rows</button>
+    <button id = "button4">Switch Row Highlights</button>
+    <button id = "button5">Turn First List Item Blue</button>
+    <button id = "button6">Replace Paragraph</button>
+
+    <script>
+        "use strict";
+
+            // TODO: Uncomment next line and get the main header element by id
+            // var chgMainHead = function(event) {
+            //     var mainHeader = document.getElementById("main-header");
+            //     // TODO: Set inner html of mainHeader to "JavaScript is Cool"
+            //     mainHeader.innerText = "JavaScript is Cool!";
+            // };
+            // // TODO: Uncomment the next line and get the sub header element by id
+            // var chgSubheadColor = function(event) {
+                // var subHeader = document.getElementById("sub-header");
+                // TODO: Set the text color of subHeader to blue
+                // subHeader.style.color = '#0000FF'
+            // };  
+            // TODO: Uncomment the next line and get all list items
+            // var hlghtListRows = function (event) {
+            //     var listItems = document.getElementsByTagName("li");
+            //     // TODO: Set text color on every other list item to grey
+            //     for (var i = 0; i < listItems.length; i++) {
+            //         if (i % 2 == 0) {
+            //             listItems[i].style.backgroundColor = "#D3D3D3";
+            //         } else {
+            //             listItems[i].style.backgroundColor = "#FFF";
+            //             };
+            //         };
+            //     };
+            // var swchRowHlght = function (event) {
+            //     var listItems = document.getElementsByTagName("li");
+            //     // TODO: Set text color on every other list item to grey
+            // for (var i = 0; i < listItems.length; i++) {
+            //     if (i % 2 == 1) {
+            //         listItems[i].style.backgroundColor = "#D3D3D3";
+            //     } else {
+            //         listItems[i].style.backgroundColor = "#FFF";
+            //         };
+            //     };
+            // };
+            // // // TODO: Set text color of li with dbid = 1 to blue
+            // var firstItemBlue = function(event) {
+            //     var listItems = document.getElementsByTagName("li");
+            //     for (var i = 0; i < listItems.length; i++) {
+            //         if (listItems[i].getAttribute("data-dbid") == 1) {
+            //             listItems[i].style.color = '#0000FF';
+            //         };
+            //     };
+            // };
+            // // // TODO: Uncomment the next line and get all elements with class name sub-paragraph
+            // var rplcPara = function (event) { 
+            //     var subParagraphs = document.getElementsByClassName("sub-paragraph");
+            // // // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
+            //     subParagraphs[0].innerText = "Mission Accomplished!";
+            // };
+
+            // document.getElementById('button1').addEventListener('click', chgMainHead, false);
+            // document.getElementById('button2').addEventListener('click', chgSubheadColor, false);
+            // document.getElementById('button3').addEventListener('click', hlghtListRows, false);
+            // document.getElementById('button4').addEventListener('click', firstItemBlue, false);
+            // document.getElementById('button5').addEventListener('click', rplcPara, false);ta
+            // document.getElementById('button6').addEventListener('click', swchRowHlght, false);
+
+
+            // Alternate syntax:
+            var listItems = document.getElementsByTagName("li");
+            var button1 = document.getElementById('button1');
+            button1.addEventListener('click', function(){
+                var mainHeader = document.getElementById("main-header");
+                mainHeader.innerText = "JavaScript is Cool!";
+            });
+
+            var button2 = document.getElementById('button2');
+            button2.addEventListener('click', function(){
+                var subHeader = document.getElementById("sub-header");
+                subHeader.style.color = '#0000FF'
+            });
+            var button3 = document.getElementById('button3');
+            button3.addEventListener('click', function(){
+                for (var i = 0; i < listItems.length; i++) {
+                    if (i % 2 == 0) {
+                        listItems[i].style.backgroundColor = "#D3D3D3";
+                    } else {
+                        listItems[i].style.backgroundColor = "#FFF";
+                        };
+                };
+            });
+            var button4 = document.getElementById('button4');
+            button4.addEventListener('click', function(){
+                for (var i = 0; i < listItems.length; i++) {
+                    if (i % 2 == 1) {
+                        listItems[i].style.backgroundColor = "#D3D3D3";
+                    } else {
+                        listItems[i].style.backgroundColor = "#FFF";
+                        };
+                };
+            });
+            var button5 = document.getElementById('button5');
+            button5.addEventListener('click', function(){
+                    for (var i = 0; i < listItems.length; i++) {
+                        if (listItems[i].getAttribute("data-dbid") == 1) {
+                            listItems[i].style.color = '#0000FF';
+                        };
+                    };
+            });
+            var button6 = document.getElementById('button6');
+            button6.addEventListener('click', function(){
+                    var subParagraphs = document.getElementsByClassName("sub-paragraph");
+                    subParagraphs[0].innerText = "Mission Accomplished!";
+            });
+
+
+    </script>
+</body>
+</html>

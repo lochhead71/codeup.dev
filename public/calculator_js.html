@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jim's supa dupa calculator!</title>
+	<style src="/css/calculator.css"></style>
+</head>
+<body>
+	<div class="displayScreen">
+		<input id="left-operand" type="text" value="" readonly>
+		<input id="operator" type="text" readonly>
+		<input id="right-operand" type="text" value="" readonly>
+	</div>
+	<div class="keypad">
+		<button class="intButton">1</button>
+		<button class="intButton">2</button>
+		<button class="intButton">3</button><br>
+		<button class="intButton">4</button>
+		<button class="intButton">5</button>
+		<button class="intButton">6</button><br>
+		<button class="intButton">7</button>
+		<button class="intButton">8</button>
+		<button class="intButton">9</button><br>
+		<button class="intButton">0</button>
+		<button class="opButton">+</button>
+		<button class="opButton">-</button><br>
+		<button class="opButton">*</button>
+		<button class="opButton">/</button>
+		<button class="opButton">%</button>
+	</div>
+
+    <script>
+
+    	"use strict";
+
+        var lop = document.getElementById('left-operand');
+        var op = document.getElementById('operator');
+        var rop = document.getElementById('right-operand');
+        var numButton = document.getElementsByClassName('numButton');
+        var opButton = document.getElementsByClassName('opButton');
+
+		var buttonInput = function (event) {
+            numButton.value = this.innerHTML;
+            if (op.value == true) {
+	            rop.value += numVal;
+            } else {
+	            lop.value += numVal;
+	        };	
+	        for (i = 0; i < buttons.length; i++) {
+		        numButtons[i].addEventListener('click', buttonInput);
+	        };
+        };
+
+        function operatorInput (event) {
+        	op.value = this.innerHTML;
+	        for (i = 0; i < operators.length; i++) {
+	        	op[i].addEventListener('click', operatorInput);
+        	};
+        };
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+		"use strict";
+		// console.log("Random Generator Formula:" + Math.floor(Math.random() * 100) + 1)
+
+
+		// create a circle object
+		var circle = {
+		    radius: 3,
+		    getArea: function () {
+		    	return Math.PI * Math.pow(this.radius,2);
+		    },
+
+		    logInfo: function (round) {
+		    var area = this.getArea();
+		    	if (round) {
+		    		area = Math.round(area);
+		    	} 
+	    		 console.log('Area of a circle with radius: ' + this.radius + ', is: ' + area);
+		    }
+		};
+
+		circle.logInfo(true);
+		circle.logInfo(false);	
+		// // log info about the circle
+		// // todo:
+		// // Change the radius of the circle to 5.
+		circle.radius = 5;
+
+		// console.log(circle.logInfo(false); circle.logInfo(true););
+
+		circle.logInfo(true);
+		circle.logInfo(false);	
+
+
+	</script>
+	
+</body>
+</html>

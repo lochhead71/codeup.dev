@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Intervals and Timeout</title>
+</head>
+<body>
+	
+
+
+	<script>
+		"use strict;";
+
+		var count = 0;
+		var max = 13;
+		var interval = 500; // interval time in milliseconds
+
+		var intervalCount = setInterval(function () {
+			if (count >= max) {
+				console.log('All done');
+				clearInterval(intervalCount);
+			} else {
+			count++;
+			console.log ("Logging line " + count + ".");
+			}
+
+		}, interval);
+
+
+		var delay = 7500;
+
+		setTimeout(function() {
+			alert("Whoops! You're out of time!");
+		}, delay)
+
+	</script>
+</body>
+</html>

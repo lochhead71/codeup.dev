@@ -18,7 +18,7 @@ else if (color=='yellow') {
 }
 
 else if (color=='green') {
-	console.log (color + " is a political party most people haven't heard o.")
+	console.log (color + " is a political party most people haven't heard of.")
 }
 
 else if (color=='blue') {
@@ -26,7 +26,7 @@ else if (color=='blue') {
 }
 
 else {
-	console.log ("I do not know anything by that color.")
+	console.log ("I do not know anything that is " + color ".")
 }
 
 console.log ((favorite == color) ? color + " is my favorite." : color + " is NOT my favorite color.");
@@ -40,27 +40,3 @@ console.log ((favorite == color) ? color + " is my favorite." : color + " is NOT
 
 // TODO: Using the ternary operator, conditionally log a statement that
 //       says whether the random color matches your favorite color.
-
-
-var whatAmI = function () {};
-
-switch (typeof whatAmI) {
-    case "boolean":
-        console.log("You are a boolean.");
-        break;
-    case "number":
-        console.log("You are a number.");
-        break;
-    case "string":
-        console.log("You are a string.");
-        break;
-    case "function":
-    case "object":
-        console.log("You are an object.");
-        break;
-    case "undefined":
-        console.log("You are undefined.");
-        break;
-    default:
-        console.log("I have no clue.");
-}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        #map-canvas {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+    <title>Jim's Favorite Restaurant</title>
+</head>
+<body>
+
+    <h2>Jim's Favorite Restaurant</h2>
+    <!-- div to hold map -->
+    <div id="map-canvas"></div>
+
+    <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk1Ce5UPKrDcvmw_4iqMMa4VIVSPaViFE"></script>
+
+    <!-- Script to show address on map -->
+    <script type="text/javascript">
+        (function() {
+            "use strict";
+
+            var mapOptions = {
+                zoom: 11,
+                center: {
+                    lat:  29.4284595,
+                    lng: -98.492433
+                }
+            };
+            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+            var restaurantAddress = "205 E Guenther St, San Antonio, TX 78204";
+
+            var checkAddress = new google.maps.Geocoder();
+
+            var threeRestaurants = [
+                {
+                    "address": "205 E Guenther St, San Antonio, TX 78204",
+                    "name": "Guenther House",
+                    "descriptor": "Biscuits aloft on WhiteWings flour from Pioneer!"
+                },
+                {
+                    "address": "10333 Huebner Rd, San Antonio, TX 78240",
+                    "name": "The Magnolia Pancake Haus",
+                    "descriptor": "The Southern Bennie is great, but don't miss the Apfel Pfannekuchen!"
+                },
+                {
+                    "address": "4108 Broadway St, San Antonio, TX 78209",
+                    "name": "Jim's Restaurant",
+                    "descriptor": "We all need a chicken fried steak for breakfast at least once!"
+                },
+            ];
+
+            threeRestaurants.forEach(function (restaurant, index, array) {
+
+                checkAddress.geocode({ "address": restaurant.address }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        map.setCenter(results[0].geometry.location);
+                        console.log(results);
+                        var restaurantMarker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location,
+                            animation: google.maps.Animation.DROP
+                        });
+                        var restMarkInfoWin = new google.maps.InfoWindow({
+                            content: "<h3>" + restaurant.name + "</h3><p>" + restaurant.descriptor + "</p>"
+                        });
+
+                        restaurantMarker.addListener('click', function() {
+                            restMarkInfoWin.open(map, restaurantMarker);
+                        });
+
+                    } else {
+                        alert("Whoops! No awesome breakfast there!")
+                    }
+                })
+            });
+        })();
+
+
+    </script>
+</body>
