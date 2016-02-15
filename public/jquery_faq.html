@@ -69,6 +69,31 @@
 		<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quos quas necessitatibus commodi recusandae sequi aperiam veritatis iure accusantium repudiandae, molestias quibusdam odio, aliquid sit nesciunt! Sit ipsa at maiores.</dd>
 	</dl>
 
+	<div class='container'>
+		<h3>Jellystone</h3>
+		<ul class ='listTitle'>
+			<li>Friendly bears</li>
+			<li>Uptight rangers</li>
+			<li>Scenic picnic spots</li>
+			<li>Pick-a-nick baskets often disappear</li>
+		</ul>
+		<h3>Yosemite</h3>
+		<ul class='listTitle'>
+			<li>Short men of Scotch-Irish descent are abundant</li>
+			<li>They may have short tempers (pun intended)</li>
+			<li>They often are well-armed</li>
+			<li>Negotiations are expedited by offering surplus ammunition</li>
+		</ul>	
+		<h3>Big Bend</h3>
+		<ul class='listTitle'>
+			<li>Located in far southwest Texas</li>
+			<li>Named after a feature in the Rio Grande river</li>
+			<li>Has multpile enviornments including alpine and desert</li>
+			<li>Wildlife include brown bears, coyote and mountain lions</li>
+		</ul>
+		
+	</div>
+
 	<script src="/js/jquery-1.12.0.min.js"></script>
 
 	<script>
@@ -79,6 +104,14 @@
 				e.preventDefault();
 				$('dd').toggleClass('invisible');
 			});
+		});
+
+		$('ul').each (function(index) {
+			$(this).children().first().css('font-weight', 'bold');
+			});
+		
+		$('li').click (function() {
+			$(this).parent().addClass('invisible');
 		});
 
 	</script>
