@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+</head>
+<body>
+    <h1>Konami Code</h1>
+
+    <script src="/js/jquery-1.12.0.min.js"></script>
+    <script>
+        "use strict";
+
+        $(document).keyup(function(event){
+            console.log(event.keyCode);
+        });
+
+        var userInput = [];
+        var konamiCode = ['38','38','40','40','37','39','37','39','66','65','13'];
+
+        $(document).keydown(function(i) {
+        	userInput.push(i.keyCode);
+        });
+        
+        if () {
+        	console.log("You've just gained 30 lives!")
+        };
+
+        userInput = [];
+
+    </script>
+</body>
+</html>

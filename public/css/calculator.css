@@ -1,11 +1,53 @@
 body {
-	background-color: #6F8872;
+	background-color: #3E5370;
+	padding: 0px;
 }
 
-.displayScreen {
+input {
+	height: 24px;
+	text-align: right;
+}
+
+.container {
+	width: 216px;
+	height: 248px; 
+	margin: 20px;
+	padding: 20px;
+	border-radius: 16px;
+	background-color: #87B5F6;
+}
+
+.display-screen {
 	margin-bottom: 10px;
 }
 
-.keypad {
+.keypad > * {
+	height: 48px;
+	width: 48px;
+	margin: 2px 1px;
+	font-size: 24px;
+	border-radius: 8px;
+}
 
+.int-button {
+	background-color: #FFCE05;
+}
+
+.opr-button {
+	background-color: #FEE690;
+}
+
+#left-operand {
+	width: 76px;
+}
+
+#operator {
+	width: 24px;
+	margin:0px 6px;
+	text-align: center;
+
+}
+
+#right-operand {
+	width: 76px;
 }

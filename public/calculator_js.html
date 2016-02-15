@@ -2,61 +2,109 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Jim's supa dupa calculator!</title>
-	<style src="/css/calculator.css"></style>
+	<title>J Lo's supa dupa cal-Q-later, gator!</title>
+	<link rel="stylesheet" href="/css/calculator.css">
 </head>
 <body>
-	<div class="displayScreen">
-		<input id="left-operand" type="text" value="" readonly>
-		<input id="operator" type="text" readonly>
-		<input id="right-operand" type="text" value="" readonly>
+	<div class="container">
+		<div class="display-screen">
+			<input id="left-operand" type="text" value="" readonly>
+			<input id="operator" type="text" value="" readonly>
+			<input id="right-operand" type="text" value="" readonly>
+		</div>
+		<div class="keypad">
+			<button class="int-button">1</button>
+			<button class="int-button">2</button>
+			<button class="int-button">3</button>
+			<button class="opr-button">+</button>
+			<br>
+			<button class="int-button">4</button>
+			<button class="int-button">5</button>
+			<button class="int-button">6</button>
+			<button class="opr-button">-</button>
+			<br>
+			<button class="int-button">7</button>
+			<button class="int-button">8</button>
+			<button class="int-button">9</button>
+			<button class="opr-button">*</button>
+			<br>
+			<button id="clear">C</button>
+			<button class="int-button">0</button>
+			<button id="equal">=</button>
+			<button class="opr-button">/</button>
+		</div>
 	</div>
-	<div class="keypad">
-		<button class="intButton">1</button>
-		<button class="intButton">2</button>
-		<button class="intButton">3</button><br>
-		<button class="intButton">4</button>
-		<button class="intButton">5</button>
-		<button class="intButton">6</button><br>
-		<button class="intButton">7</button>
-		<button class="intButton">8</button>
-		<button class="intButton">9</button><br>
-		<button class="intButton">0</button>
-		<button class="opButton">+</button>
-		<button class="opButton">-</button><br>
-		<button class="opButton">*</button>
-		<button class="opButton">/</button>
-		<button class="opButton">%</button>
-	</div>
-
     <script>
-
     	"use strict";
 
         var lop = document.getElementById('left-operand');
         var op = document.getElementById('operator');
-        var rop = document.getElementById('right-operand');
-        var numButton = document.getElementsByClassName('numButton');
-        var opButton = document.getElementsByClassName('opButton');
+        var rop = document.getElementById("right-operand");
+        var num_btn = document.getElementsByClassName('int-button');
+        var op_btn = document.getElementsByClassName('opr-button');
 
-		var buttonInput = function (event) {
-            numButton.value = this.innerHTML;
-            if (op.value == true) {
-	            rop.value += numVal;
-            } else {
-	            lop.value += numVal;
-	        };	
-	        for (i = 0; i < buttons.length; i++) {
-		        numButtons[i].addEventListener('click', buttonInput);
-	        };
+		function buttonInput (event) {
+			if (op.value != false) {
+				rop.value += this.innerHTML;
+			} else {
+				lop.value += this.innerHTML;
+			}
         };
+
+        for (var i = 0; i < num_btn.length; i++) {
+	        num_btn[i].addEventListener('click', buttonInput);
+	    };
 
         function operatorInput (event) {
         	op.value = this.innerHTML;
-	        for (i = 0; i < operators.length; i++) {
-	        	op[i].addEventListener('click', operatorInput);
-        	};
         };
+        for (var i = 0; i < op_btn.length; i++) {
+        	op_btn[i].addEventListener('click', operatorInput);
+    	};
+
+		document.getElementById('equal').addEventListener('click', function (event) {
+			if (op.value == '+') {
+				var equation = parseInt(lop.value) + parseInt(rop.value);
+				op.value = "";
+				rop.value = "";
+				lop.value = equation;
+			};
+		});
+
+		document.getElementById('equal').addEventListener('click', function (event) {
+			if (op.value == '-') {
+				var equation = parseInt(lop.value) - parseInt(rop.value);
+				op.value = "";
+				rop.value = "";
+				lop.value = equation;
+			};
+		});
+
+		document.getElementById('equal').addEventListener('click', function (event) {
+			if (op.value == '*') {
+				var equation = parseInt(lop.value) * parseInt(rop.value);
+				op.value = "";
+				rop.value = "";
+				lop.value = equation;
+			};
+		});
+
+		document.getElementById('equal').addEventListener('click', function (event) {
+			if (op.value == '/') {
+				var equation = parseInt(lop.value) / parseInt(rop.value);
+				op.value = "";
+				rop.value = "";
+				lop.value = equation;
+			};
+		});
+
+		function clear() {
+			document.getElementById('clear').addEventListener('click', function (event) {
+				lop.value = "";
+				op.value = "";
+				rop.value = "";
+			});
+		};
 
     </script>
 </body>
