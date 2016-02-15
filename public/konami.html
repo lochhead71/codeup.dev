@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Konami Code</title>
+    <title>Do you know the Konami Code?</title>
+    <link rel="stylesheet" href="/css/konami.css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <h1>Konami Code</h1>
+    <h1>Do you know the Konami Code?</h1>
+    <div></div>
 
     <script src="/js/jquery-1.12.0.min.js"></script>
     <script>
         "use strict";
+        $(document).ready(function() {
 
-        $(document).keyup(function(event){
-            console.log(event.keyCode);
+            // var userInput = [];
+            var currentIndex = 0;
+            var konamiCode = ['38','38','40','40','37','39','37','39','66','65','13'];
+
+            function cssAwesomeness () {
+                $('body').css('background-image', 'url(/img/Konami_Logo_1998.png')
+            }
+
+            $(document).keydown(function(event) {
+            	// userInput.push(event.keyCode);
+                // if (userInput.join(',') == konamiCode.join(',')) {
+                // };
+                var currentKeyCode = event.keyCode;
+
+                if (currentKeyCode == konamiCode[currentIndex]) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+
+                if (currentIndex == konamiCode.length) {
+                    currentIndex = 0;
+                    cssAwesomeness ();
+                }
+
+                
+                
+            });
         });
-
-        var userInput = [];
-        var konamiCode = ['38','38','40','40','37','39','37','39','66','65','13'];
-
-        $(document).keydown(function(i) {
-        	userInput.push(i.keyCode);
-        });
-        
-        if () {
-        	console.log("You've just gained 30 lives!")
-        };
-
-        userInput = [];
 
     </script>
 </body>

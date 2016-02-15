@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>National Parks in the United States</title>
+
+	<style>
+
+		dt {
+			margin-top: 10px;
+			font-family: sans-serif;
+			font-size: 1.25em;
+			font-weight: 600px;
+			color: #395C0D;
+		}
+
+		dd {
+		}
+
+		.invisible {
+			display: none;
+		}
+
+		#toggle {
+			text-decoration: none;
+			font-family: sans-serif;
+			font-weight: bold;
+			font-size: 1.25em;
+			color: OliveDrab;
+		}
+
+	</style>
+
+</head>
+<body>
+	<header>
+		<h1>National Parks: Q &amp; A</h1>
+		<a href="#" id="toggle">Toggle Answers</a>
+	</header>
+	<dl>
+		<dt>What's a National Park?</dt>
+		<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, quos. Doloremque cupiditate dignissimos culpa ipsum vero, fuga modi vitae odio aspernatur quo nam ab molestias odit reiciendis quaerat excepturi illum.</dd>
+
+		<dt>Why do we want those?</dt>
+		<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ducimus quam asperiores error non saepe, culpa similique veniam blanditiis nobis qui autem quos, cupiditate impedit eum possimus quaerat? Unde, dolorem.</dd>
+
+		<dt>What could I do there?</dt>
+		<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ratione deleniti doloribus explicabo consectetur doloremque placeat porro, neque animi a obcaecati, ex laboriosam dolore, voluptas, rerum. Eius velit nesciunt officia!</dd>
+
+		<dt>Why would I want to do that?</dt>
+		<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nesciunt modi provident! Cupiditate quam neque, atque, unde delectus dolor perspiciatis nihil adipisci libero rerum numquam voluptates labore aliquid. Autem, nobis.</dd>
+
+		<dt>Is there anything else I could do instead?</dt>
+		<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque quas ut qui a, sunt unde dolor in ratione adipisci minus eum placeat. Quis corrupti sed est sapiente amet, esse! Expedita.</dd>
+
+		<dt>Why not?</dt>
+		<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet dolorem nobis, illo totam recusandae aperiam, delectus iusto eius dolor, asperiores harum eaque fugit ipsa. Illum ipsum pariatur quia voluptas velit!</dd>
+
+		<dt>Are there cooler activities at state parks?</dt>
+		<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ullam numquam officiis quas beatae necessitatibus illo amet voluptatum unde cumque, animi cum veritatis consequuntur, nihil itaque voluptate quisquam in! Dicta!</dd>
+
+		<dt>Do those rangers have spiffy outfits as well?</dt>
+		<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A commodi eaque, in iusto quibusdam voluptate beatae nulla nam accusantium ut qui neque dolorum tempore blanditiis hic culpa doloremque, totam corrupti!</dd>
+
+		<dt>Have you ever met Yogi and Boo Boo?</dt>
+		<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio neque, qui architecto sunt nam, minus ipsam at reiciendis earum repellendus, nihil laboriosam sapiente! Distinctio officia error, ullam unde eaque reiciendis.</dd>
+
+		<dt>Why not? No pick-a-nick basket?</dt>
+		<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quos quas necessitatibus commodi recusandae sequi aperiam veritatis iure accusantium repudiandae, molestias quibusdam odio, aliquid sit nesciunt! Sit ipsa at maiores.</dd>
+	</dl>
+
+	<script src="/js/jquery-1.12.0.min.js"></script>
+
+	<script>
+		'use strict';
+
+		$(document).ready(function() {
+			$('#toggle').click(function(e) {
+				e.preventDefault();
+				$('dd').toggleClass('invisible');
+			});
+		});
+
+	</script>
+	
+</body>
+</html>
