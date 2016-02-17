@@ -1,0 +1,31 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+	background-color: FloralWhite;
+}
+
+h1 {
+	font-weight: 600;
+	color: ForestGreen;
+}
+
+td {
+	width: 150px;
+	padding: 6px;
+	border: 1px, solid, DarkGoldenRod;
+}
+
+th {
+	background-color: ForestGreen;
+	color: FloralWhite;
+	font-weight: 600;
+}
+
+.evenRow {
+	background-color: FloralWhite;
+	color: DarkGoldenRod;
+}
+
+.oddRow {
+	background-color: DarkGoldenRod;
+	color: FloralWhite;
+}
