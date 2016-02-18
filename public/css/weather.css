@@ -8,15 +8,25 @@ body {
 	color:#b3c6ff;
 }
 
-.current {
+.toggle {
+	float: left;
+	background-color: #4d79ff;
+	padding: 4px;
+	margin-left: 12px;
+	width: 100px;
+	height: 40px;
+	border-radius: 8px;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300px;
+	font-size: 1.0em;
+	color: white;
+}
+
+.lableButton {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	background-color: #4d79ff;
-	padding: 10px;
-	margin: 10px 100px;
-	border-radius: 16px;
-	font-weight: 300px;
+	margin-right: 100px;
 }
 
 .wrapper {
@@ -28,6 +38,10 @@ body {
 	margin: 10px 100px;
 	border-radius: 16px;
 	font-weight: 300px;
+}
+
+.day {
+	color: white;
 }
 
 #header {

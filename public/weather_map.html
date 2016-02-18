@@ -12,7 +12,14 @@
 	</header>
 
 	<main id="target">
-		<h2 class="boxTitle">3-Day Forecast:</h2>
+		<div class='lableButton'>
+			<h2 class="boxTitle">3-Day Forecast:</h2>
+			<div>
+				<button class='toggle' id='morn'>Morning</button>
+				<button class='toggle' id='aft'>Afternoon</button>
+				<button class='toggle' id='eve'>Evening</button>
+			</div>	
+		</div>	
 		<div class='forecast'></div>
 	</main>
 
@@ -28,37 +35,51 @@
 			return string;
 		};
 
+		function dayOfTheWeek(d){
+			// console.log(d);
+			var weekday = new Array(7);
+			weekday[0]=  "Sunday";
+			weekday[1] = "Monday";
+			weekday[2] = "Tuesday";
+			weekday[3] = "Wednesday";
+			weekday[4] = "Thursday";
+			weekday[5] = "Friday";
+			weekday[6] = "Saturday";
+			return weekday[d.getDay()];
+		};
+
 		(function(){
 
 			// code for current conditions
 
-			$.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+			$.get("http://api.openweathermap.org/data/2.5/forecast", {
 			    APPID: "5c70f220efd6630553be87a8a245afeb",
 			    q:     "San Antonio, TX",
 			    units: "imperial",
-			    cnt: 3
+			    cnt:24
 			}).done(function(data) {
 				console.log(data);
 				var weatherCond = "";
 				// code to start building my forecast objects
-			    data.list.forEach(function(day) {
-			    	weatherCond += "<div class='wrapper'>";
+			    data.list.forEach(function(day, index) {
+			    	weatherCond += "<div class='wrapper' data-id='" + index + "'>";
+					weatherCond += "<h3 class='day'>" + dayOfTheWeek(new Date(day.dt*1000)) + "</h3>";
 			    	weatherCond += "<h3 class='description'>" + capitalize(day.weather[0].description) + "</h3>";
 
-			    	if (day.clouds <= 20) {
+			    	if (day.clouds.all <= 20) {
 			    		weatherCond += "<img src='/img/weathMap_sunny.png' alt='sunny logo' height='60px'>";
-			    	} else if ((day.clouds >= 21) && (day.clouds <= 70)) {
+			    	} else if ((day.clouds.all >= 21) && (day.clouds.all <= 70)) {
 			    		weatherCond += "<img src='/img/weathMap_partlyCloudy.png' alt='partly cloudy logo' height='60px'>";
-			    	} else if (day.clouds >=71){
+			    	} else if (day.clouds.all >=71){
 			    		weatherCond += "<img src='/img/weathMap_cloudy.png' alt='cloudy logo' height='60px'>";
 			    	};
 
-			    	weatherCond += "<p class = 'stats'> <strong>Temperature:</strong><br>" + parseInt(day.temp.day) + "&deg; Fahrenheit</p>";
-			    	if (day.temp.day <= 50) {
+			    	weatherCond += "<p class = 'stats'> <strong>Temperature:</strong><br>" + parseInt(day.main.temp) + "&deg; Fahrenheit</p>";
+			    	if (day.main.temp <= 50) {
 				    	weatherCond += "<img src='/img/weathMap_cold.png' alt='cold logo' height='60px'>"
-					    } else if (day.temp.day >= 51 && day.temp.day <= 85) {
+					    } else if (day.main.temp >= 51 && day.main.temp <= 85) {
 				    	weatherCond += "<img src='/img/weathMap_mild.png' alt='cold logo' height='60px'>"
-					    } else if (day.temp.day >= 86) {
+					    } else if (day.main.temp >= 86) {
 				    	weatherCond += "<img src='/img/weathMap_hot.png' alt='cold logo' height='60px'>"
 
 					};
@@ -67,9 +88,45 @@
 			    	weatherCond += "</div>"
                 });
 
-                $("#target").append(weatherCond);
+		        $("#target").append(weatherCond);
+
+				// default display setting
+
+				displayToD([4, 12, 20]);
+
 	    	});
+
+			// function to interate the node variables
+
+			function displayToD(ids) {
+				 $('div.wrapper').each(function(){
+	        		if ($(this).data('id') != ids[0] && $(this).data('id') != ids[1] && $(this).data('id') != ids[2]) {
+			            	$(this).hide();
+					} else{
+						// console.log($(this).data('id'));
+						$(this).show();
+					};
+	            	
+				});
+			};
+
+			// time of day toggle buttons
+
+            $('#morn').click(function() {
+            	displayToD([2, 10, 18]);
+
+            });
+
+             $('#aft').click(function() {
+            	displayToD([4, 12, 20]);
+            });
+
+             $('#eve').click(function() {
+            	displayToD([6, 14, 22]);
+            });
+
 		}());
+
 
 	</script>
 	
