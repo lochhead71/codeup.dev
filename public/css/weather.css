@@ -1,0 +1,43 @@
+body {
+	background-color: #002699;
+	font-family: 'Oswald', sans-serif;
+}
+
+.boxTitle {
+	margin-left: 100px;
+	color:#b3c6ff;
+}
+
+.current {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #4d79ff;
+	padding: 10px;
+	margin: 10px 100px;
+	border-radius: 16px;
+	font-weight: 300px;
+}
+
+.forecast {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #4d79ff;
+	padding: 10px;
+	margin: 10px 100px;
+	border-radius: 16px;
+	font-weight: 300px;
+}
+
+#header {
+	font-family: 'Courgette', cursive;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 10px;
+}
+
+#pageTitle {
+	color: #FFF;
+}

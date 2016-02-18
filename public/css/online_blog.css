@@ -14,25 +14,19 @@ h1 {
 	color: FloralWhite;
 }
 
-td {
-	width: 150px;
-	padding: 6px;
-	border: 1px, solid, DarkGoldenRod;
-}
-
-th {
-	background-color: ForestGreen;
-	color: FloralWhite;
-	font-weight: 600;
+h3 {
+		padding-top: 15px;
+		font-weight: 600;
+		color: DarkGoldenRod;
 }
 
 .categories {
 	color: DarkGoldenRod;
 }
 
-.oddRow {
-	background-color: DarkGoldenRod;
-	color: FloralWhite;
+.blogEntry {
+	margin-bottom: 10px;
+	border-bottom: 1px solid DarkGoldenRod;
 }
 
 #posts {

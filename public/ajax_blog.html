@@ -20,7 +20,7 @@
 		(function () {
 			function downloadBlogs() {
 				$.get('/data/blog.json').done(function(items){
-					items.forEach(function(posts, index) {
+					items.forEach(function(posts) {
 		                var blogPost = "<div class='blogEntry'>"
 		                	blogPost += "<h3 class='title'>" + posts.title + "</h3>";
 		                	blogPost += "<h4>" + posts.date + "</h4>";

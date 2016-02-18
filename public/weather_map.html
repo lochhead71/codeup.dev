@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>San Antonio's Weather</title>
+	<link rel="stylesheet" href="/css/weather.css">
+	<link href='https://fonts.googleapis.com/css?family=Courgette|Oswald:400,300,700' rel='stylesheet' type='text/css'></head>
+<body>
+	<header id="header">
+		<h1 id="pageTitle">What's happening in <br>San Antonio weather?</h1>
+		<img src="/img/weathMap_rainbow.png" alt="rainbow cloud logo" height="75px">
+	</header>
+
+	<main>
+		<h2 class="boxTitle">Current Conditions:</h2>
+		<div class='current'></div>
+		<h2 class="boxTitle">3-Day Forecast:</h2>
+		<div class='forecast'></div>
+	</main>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+	<script>
+		"use strict";
+
+		function capitalize(string) {
+			string = string.split("");
+			string[0] = string[0].toUpperCase();
+			string = string.join("");
+			return string;
+		};
+
+		(function(){
+
+			// code for current conditions
+
+			$.get("http://api.openweathermap.org/data/2.5/weather", {
+			    APPID: "5c70f220efd6630553be87a8a245afeb",
+			    q:     "San Antonio, TX",
+			    units: "imperial"
+			}).done(function(data) {
+				// console.log(data);
+			    var weatherCond = "";
+			    	weatherCond += "<h3 class='description'>" + capitalize(data.weather[0].description) + "</h3>";
+			    	if (data.clouds.all <= 40) {
+
+			    		weatherCond += "<img src='/img/weathMap_sunny.png' alt='sunny logo' height='60px'>";
+
+			    	} else if ((data.clouds.all >= 41) && (data.clouds.all <= 70)) {
+			    		weatherCond += "<img src='/img/weathMap_partlyCloudy.png' alt='partly cloudy logo' height='60px'>";
+
+			    	} else if (data.clouds.all >=71){
+			    		weatherCond += "<img src='/img/weathMap_cloudy.png' alt='cloudy logo' height='60px'>";
+			    	};
+			    	weatherCond += "<p class = 'stats'> <strong>Temperature:</strong><br>" + parseInt(data.main.temp) + "&deg; Fahrenheit</p>";
+			    	if (data.main.temp <= 50) {
+				    	weatherCond += "<img src='/img/weathMap_cold.png' alt='cold logo' height='60px'>"
+					    } else if (data.main.temp >= 51 && data.main.temp <= 85) {
+				    	weatherCond += "<img src='/img/weathMap_mild.png' alt='cold logo' height='60px'>"
+					    } else if (data.main.temp >= 86) {
+				    	weatherCond += "<img src='/img/weathMap_hot.png' alt='cold logo' height='60px'>"
+					};
+			    	weatherCond += "<p class = 'stats'><strong>Wind Speed:</strong><br>" + data.wind.speed + " mph</p>";
+
+                $(".current").append(weatherCond);
+	    	});
+		}());
+
+	</script>
+	
+</body>
+</html>
