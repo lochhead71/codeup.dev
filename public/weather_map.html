@@ -11,9 +11,7 @@
 		<img src="/img/weathMap_rainbow.png" alt="rainbow cloud logo" height="75px">
 	</header>
 
-	<main>
-		<h2 class="boxTitle">Current Conditions:</h2>
-		<div class='current'></div>
+	<main id="target">
 		<h2 class="boxTitle">3-Day Forecast:</h2>
 		<div class='forecast'></div>
 	</main>
@@ -34,35 +32,42 @@
 
 			// code for current conditions
 
-			$.get("http://api.openweathermap.org/data/2.5/weather", {
+			$.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
 			    APPID: "5c70f220efd6630553be87a8a245afeb",
 			    q:     "San Antonio, TX",
-			    units: "imperial"
+			    units: "imperial",
+			    cnt: 3
 			}).done(function(data) {
-				// console.log(data);
-			    var weatherCond = "";
-			    	weatherCond += "<h3 class='description'>" + capitalize(data.weather[0].description) + "</h3>";
-			    	if (data.clouds.all <= 40) {
+				console.log(data);
+				var weatherCond = "";
+				// code to start building my forecast objects
+			    data.list.forEach(function(day) {
+			    	weatherCond += "<div class='wrapper'>";
+			    	weatherCond += "<h3 class='description'>" + capitalize(day.weather[0].description) + "</h3>";
 
+			    	if (day.clouds <= 20) {
 			    		weatherCond += "<img src='/img/weathMap_sunny.png' alt='sunny logo' height='60px'>";
-
-			    	} else if ((data.clouds.all >= 41) && (data.clouds.all <= 70)) {
+			    	} else if ((day.clouds >= 21) && (day.clouds <= 70)) {
 			    		weatherCond += "<img src='/img/weathMap_partlyCloudy.png' alt='partly cloudy logo' height='60px'>";
-
-			    	} else if (data.clouds.all >=71){
+			    	} else if (day.clouds >=71){
 			    		weatherCond += "<img src='/img/weathMap_cloudy.png' alt='cloudy logo' height='60px'>";
 			    	};
-			    	weatherCond += "<p class = 'stats'> <strong>Temperature:</strong><br>" + parseInt(data.main.temp) + "&deg; Fahrenheit</p>";
-			    	if (data.main.temp <= 50) {
-				    	weatherCond += "<img src='/img/weathMap_cold.png' alt='cold logo' height='60px'>"
-					    } else if (data.main.temp >= 51 && data.main.temp <= 85) {
-				    	weatherCond += "<img src='/img/weathMap_mild.png' alt='cold logo' height='60px'>"
-					    } else if (data.main.temp >= 86) {
-				    	weatherCond += "<img src='/img/weathMap_hot.png' alt='cold logo' height='60px'>"
-					};
-			    	weatherCond += "<p class = 'stats'><strong>Wind Speed:</strong><br>" + data.wind.speed + " mph</p>";
 
-                $(".current").append(weatherCond);
+			    	weatherCond += "<p class = 'stats'> <strong>Temperature:</strong><br>" + parseInt(day.temp.day) + "&deg; Fahrenheit</p>";
+			    	if (day.temp.day <= 50) {
+				    	weatherCond += "<img src='/img/weathMap_cold.png' alt='cold logo' height='60px'>"
+					    } else if (day.temp.day >= 51 && day.temp.day <= 85) {
+				    	weatherCond += "<img src='/img/weathMap_mild.png' alt='cold logo' height='60px'>"
+					    } else if (day.temp.day >= 86) {
+				    	weatherCond += "<img src='/img/weathMap_hot.png' alt='cold logo' height='60px'>"
+
+					};
+			    	weatherCond += "<p class = 'stats'><strong>Wind Speed:</strong><br>" + day.speed + " mph</p>";
+
+			    	weatherCond += "</div>"
+                });
+
+                $("#target").append(weatherCond);
 	    	});
 		}());
 
