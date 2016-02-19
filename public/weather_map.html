@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>San Antonio's Weather</title>
+	<title>Friendly Weather Update</title>
 	<link rel="stylesheet" href="/css/weather.css">
 	<link href='https://fonts.googleapis.com/css?family=Courgette|Oswald:400,300,700' rel='stylesheet' type='text/css'></head>
 <body>
 	<header id="header">
-		<h1 id="pageTitle">What's happening in <br>San Antonio weather?</h1>
+		<h1 id="pageTitle">What's happening<br>with the weather?</h1>
 		<img src="/img/weathMap_rainbow.png" alt="rainbow cloud logo" height="75px">
 	</header>
 
-	<main id="target">
+	<main>
 		<div class='lableButton'>
 			<h2 class="boxTitle">3-Day Forecast:</h2>
 			<div>
@@ -21,6 +21,17 @@
 			</div>	
 		</div>	
 		<div class='forecast'></div>
+		<div class='map'>
+			<div class='coordinates'>
+				<h2 class="boxTitle">Change location:</h2>
+				<label for="long">Longitude</label>
+				<input name="long" type="text" id="long">
+				<label for="lat">Latitude</label>
+				<input name="lat" type="text" id="lat">
+				<button id='submit'>Submit</button>
+			</div>
+		</div>
+
 	</main>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -36,7 +47,6 @@
 		};
 
 		function dayOfTheWeek(d){
-			// console.log(d);
 			var weekday = new Array(7);
 			weekday[0]=  "Sunday";
 			weekday[1] = "Monday";
@@ -50,17 +60,25 @@
 
 		(function(){
 
-			// code for current conditions
+			// setting default coordinates
+
+			var lat = '29.423017';
+			var lon = '-98.48527';
+
+			// OpenWeatherMap API Call
 
 			$.get("http://api.openweathermap.org/data/2.5/forecast", {
 			    APPID: "5c70f220efd6630553be87a8a245afeb",
-			    q:     "San Antonio, TX",
+				lat: lat,
+				lon: lon,
 			    units: "imperial",
 			    cnt:24
 			}).done(function(data) {
 				console.log(data);
 				var weatherCond = "";
-				// code to start building my forecast objects
+
+				// code to build my forecast objects
+
 			    data.list.forEach(function(day, index) {
 			    	weatherCond += "<div class='wrapper' data-id='" + index + "'>";
 					weatherCond += "<h3 class='day'>" + dayOfTheWeek(new Date(day.dt*1000)) + "</h3>";
@@ -88,45 +106,52 @@
 			    	weatherCond += "</div>"
                 });
 
-		        $("#target").append(weatherCond);
+		        // longitude and latitude inputs
+
+				$("#submit").click(function() {
+					lat = $('#long').val();
+					lon = $('#lat').val();
+					console.log(lat);
+					console.log(lon);
+				});
+
+		        $(".forecast").append(weatherCond);
+
+				// function to interate the node variables
+
+				function displayToD(ids) {
+					 $('div.wrapper').each(function(){
+		        		if ($(this).data('id') != ids[0] && $(this).data('id') != ids[1] && $(this).data('id') != ids[2]) {
+				            	$(this).hide();
+						} else {
+							$(this).show();
+						};
+					});
+				};
 
 				// default display setting
 
 				displayToD([4, 12, 20]);
+			
+				// time of day toggle buttons
 
-	    	});
+	            $('#morn').click(function() {
+	            	displayToD([2, 10, 18]);
 
-			// function to interate the node variables
+	            });
 
-			function displayToD(ids) {
-				 $('div.wrapper').each(function(){
-	        		if ($(this).data('id') != ids[0] && $(this).data('id') != ids[1] && $(this).data('id') != ids[2]) {
-			            	$(this).hide();
-					} else{
-						// console.log($(this).data('id'));
-						$(this).show();
-					};
-	            	
-				});
-			};
+	             $('#aft').click(function() {
+	            	displayToD([4, 12, 20]);
+	            });
 
-			// time of day toggle buttons
+	             $('#eve').click(function() {
+	            	displayToD([6, 14, 22]);
+	            });
 
-            $('#morn').click(function() {
-            	displayToD([2, 10, 18]);
-
-            });
-
-             $('#aft').click(function() {
-            	displayToD([4, 12, 20]);
-            });
-
-             $('#eve').click(function() {
-            	displayToD([6, 14, 22]);
-            });
-
+         	// closing .done function
+			});
+		// closing IFFE statement
 		}());
-
 
 	</script>
 	

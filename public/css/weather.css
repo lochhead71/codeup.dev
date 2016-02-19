@@ -44,6 +44,38 @@ body {
 	color: white;
 }
 
+.coordinates {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.coordinates > h2 {
+	margin-right: 20px;
+}
+
+.coordinates > label {
+	color: white;
+}
+
+#submit {
+	background-color: #4d79ff;
+	padding: 4px;
+	margin-left: 12px;
+	width: 60px;
+	height: 36px;
+	border-radius: 6px;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300px;
+	font-size: 1.0em;
+	color: white;
+}
+
+#long, #lat {
+	height: 24px;
+	margin: 0px 15px;
+}
+
 #header {
 	font-family: 'Courgette', cursive;
 	display: flex;
