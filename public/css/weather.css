@@ -61,6 +61,15 @@ body {
 
 .coordinates > label {
 	color: white;
+
+}
+
+#map-canvas {
+	width: 600px;
+	height: 320px;
+	border: 4px solid #4d79ff;
+	border-radius: 16px;
+	margin-left: 100px;
 }
 
 #submit {
