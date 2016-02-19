@@ -24,132 +24,193 @@
 		<div class='map'>
 			<div class='coordinates'>
 				<h2 class="boxTitle">Change location:</h2>
-				<label for="long">Longitude</label>
-				<input name="long" type="text" id="long">
 				<label for="lat">Latitude</label>
 				<input name="lat" type="text" id="lat">
+				<label for="long">Longitude</label>
+				<input name="long" type="text" id="long">
 				<button id='submit'>Submit</button>
 			</div>
+			<div class='coordinates'>
+				<h2  class="boxTitle">Enter City Name</h2>
+				<input type="text" name="cityName" id="city">
+				<button id="submitCity">Submit</button>
+			</div>
 		</div>
+		<div id='map'></div>
 
 	</main>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk1Ce5UPKrDcvmw_4iqMMa4VIVSPaViFE"></script>
+
 	<script>
 		"use strict";
 
-		function capitalize(string) {
-			string = string.split("");
-			string[0] = string[0].toUpperCase();
-			string = string.join("");
-			return string;
-		};
-
-		function dayOfTheWeek(d){
-			var weekday = new Array(7);
-			weekday[0]=  "Sunday";
-			weekday[1] = "Monday";
-			weekday[2] = "Tuesday";
-			weekday[3] = "Wednesday";
-			weekday[4] = "Thursday";
-			weekday[5] = "Friday";
-			weekday[6] = "Saturday";
-			return weekday[d.getDay()];
-		};
-
 		(function(){
 
-			// setting default coordinates
+			function onSubmitLatLon() {
+				lat = $('#lat').val();
+				lon = $('#long').val();
+				execute();
+			}
 
-			var lat = '29.423017';
-			var lon = '-98.48527';
+			function capitalize(string) {
+				string = string.split("");
+				string[0] = string[0].toUpperCase();
+				string = string.join("");
+				return string;
+			};
+
+			function dayOfTheWeek(d){
+				var weekday = new Array(7);
+				weekday[0]=  "Sunday";
+				weekday[1] = "Monday";
+				weekday[2] = "Tuesday";
+				weekday[3] = "Wednesday";
+				weekday[4] = "Thursday";
+				weekday[5] = "Friday";
+				weekday[6] = "Saturday";
+				return weekday[d.getDay()];
+			};
+
+
+			// function to interate the node variables
+
+			function displayToD(ids) {
+				 $('div.wrapper').each(function(){
+	        		if ($(this).data('id') != ids[0] && $(this).data('id') != ids[1] && $(this).data('id') != ids[2]) {
+			            	$(this).hide();
+					} else {
+						$(this).show();
+					};
+				});
+			};
+
+			// Code to allow City input to generate latitude and longitude
+
+			function initMap() {
+				console.log("Test");
+			  var map = new google.maps.Map(document.getElementById('map'), {
+			    zoom: 8,
+			    center: {lat: -34.397, lng: 150.644}
+			  });
+			  var geocoder = new google.maps.Geocoder();
+
+			  document.getElementById('submitCity').addEventListener('click', function() {
+			    geocodeAddress(geocoder, map);
+			  });
+			}
+
+			function geocodeAddress(geocoder, resultsMap) {
+			  var address = document.getElementById('city').value;
+			  geocoder.geocode({'address': address}, function(results, status) {
+			    if (status === google.maps.GeocoderStatus.OK) {
+			      resultsMap.setCenter(results[0].geometry.location);
+			      // console.log(results[0].geometry.location);
+			    	$("#lat").val(results[0].geometry.location.lat());
+			    	$("#long").val(results[0].geometry.location.lng());
+
+			    	onSubmitLatLon();
+			    	// console.log ("Lat: " + lat + " Long: " + lon)
+
+			      // call weather stuff pass long, lat
+
+			      // var marker = new google.maps.Marker({
+			      //   map: resultsMap,
+			      //   position: results[0].geometry.location
+			      // });
+			    } else {
+			      alert('Geocode was not successful for the following reason: ' + status);
+			    }
+			  });
+			}
 
 			// OpenWeatherMap API Call
+			function execute() {
+				// console.log('lat: ' + lat)
+				// console.log('lon: ' + lon)
+				$.get("http://api.openweathermap.org/data/2.5/forecast", {
+				    APPID: "5c70f220efd6630553be87a8a245afeb",
+					lat: lat,
+					lon: lon,
+				    units: "imperial",
+				    cnt:24
+				}).done(function(data) {
+					console.log(data);
+					var weatherCond = "";
 
-			$.get("http://api.openweathermap.org/data/2.5/forecast", {
-			    APPID: "5c70f220efd6630553be87a8a245afeb",
-				lat: lat,
-				lon: lon,
-			    units: "imperial",
-			    cnt:24
-			}).done(function(data) {
-				console.log(data);
-				var weatherCond = "";
+					// code to build my forecast objects
 
-				// code to build my forecast objects
+				    data.list.forEach(function(day, index) {
+				    	weatherCond += "<div class='wrapper' data-id='" + index + "'>";
+						weatherCond += "<h3 class='day'>" + dayOfTheWeek(new Date(day.dt*1000)) + "</h3>";
+				    	weatherCond += "<h3 class='description'>" + capitalize(day.weather[0].description) + "</h3>";
 
-			    data.list.forEach(function(day, index) {
-			    	weatherCond += "<div class='wrapper' data-id='" + index + "'>";
-					weatherCond += "<h3 class='day'>" + dayOfTheWeek(new Date(day.dt*1000)) + "</h3>";
-			    	weatherCond += "<h3 class='description'>" + capitalize(day.weather[0].description) + "</h3>";
+				    	if (day.clouds.all <= 20) {
+				    		weatherCond += "<img src='/img/weathMap_sunny.png' alt='sunny logo' height='60px'>";
+				    	} else if ((day.clouds.all >= 21) && (day.clouds.all <= 70)) {
+				    		weatherCond += "<img src='/img/weathMap_partlyCloudy.png' alt='partly cloudy logo' height='60px'>";
+				    	} else if (day.clouds.all >=71){
+				    		weatherCond += "<img src='/img/weathMap_cloudy.png' alt='cloudy logo' height='60px'>";
+				    	};
 
-			    	if (day.clouds.all <= 20) {
-			    		weatherCond += "<img src='/img/weathMap_sunny.png' alt='sunny logo' height='60px'>";
-			    	} else if ((day.clouds.all >= 21) && (day.clouds.all <= 70)) {
-			    		weatherCond += "<img src='/img/weathMap_partlyCloudy.png' alt='partly cloudy logo' height='60px'>";
-			    	} else if (day.clouds.all >=71){
-			    		weatherCond += "<img src='/img/weathMap_cloudy.png' alt='cloudy logo' height='60px'>";
-			    	};
+				    	weatherCond += "<p class = 'stats'> <strong>Temperature:</strong><br>" + parseInt(day.main.temp) + "&deg; Fahrenheit</p>";
+				    	if (day.main.temp <= 50) {
+					    	weatherCond += "<img src='/img/weathMap_cold.png' alt='cold logo' height='60px'>"
+						    } else if (day.main.temp >= 51 && day.main.temp <= 85) {
+					    	weatherCond += "<img src='/img/weathMap_mild.png' alt='cold logo' height='60px'>"
+						    } else if (day.main.temp >= 86) {
+					    	weatherCond += "<img src='/img/weathMap_hot.png' alt='cold logo' height='60px'>"
 
-			    	weatherCond += "<p class = 'stats'> <strong>Temperature:</strong><br>" + parseInt(day.main.temp) + "&deg; Fahrenheit</p>";
-			    	if (day.main.temp <= 50) {
-				    	weatherCond += "<img src='/img/weathMap_cold.png' alt='cold logo' height='60px'>"
-					    } else if (day.main.temp >= 51 && day.main.temp <= 85) {
-				    	weatherCond += "<img src='/img/weathMap_mild.png' alt='cold logo' height='60px'>"
-					    } else if (day.main.temp >= 86) {
-				    	weatherCond += "<img src='/img/weathMap_hot.png' alt='cold logo' height='60px'>"
-
-					};
-			    	weatherCond += "<p class = 'stats'><strong>Wind Speed:</strong><br>" + day.speed + " mph</p>";
-
-			    	weatherCond += "</div>"
-                });
-
-		        // longitude and latitude inputs
-
-				$("#submit").click(function() {
-					lat = $('#long').val();
-					lon = $('#lat').val();
-					console.log(lat);
-					console.log(lon);
-				});
-
-		        $(".forecast").append(weatherCond);
-
-				// function to interate the node variables
-
-				function displayToD(ids) {
-					 $('div.wrapper').each(function(){
-		        		if ($(this).data('id') != ids[0] && $(this).data('id') != ids[1] && $(this).data('id') != ids[2]) {
-				            	$(this).hide();
-						} else {
-							$(this).show();
 						};
-					});
-				};
+				    	weatherCond += "<p class = 'stats'><strong>Wind Speed:</strong><br>" + day.speed + " mph</p>";
 
+				    	weatherCond += "</div>"
+	                });
+
+					$(".forecast").html("")
+			        $(".forecast").append(weatherCond);
+		        
 				// default display setting
 
-				displayToD([4, 12, 20]);
-			
-				// time of day toggle buttons
+					displayToD([4, 12, 20]);
 
-	            $('#morn').click(function() {
-	            	displayToD([2, 10, 18]);
+					initMap();
 
-	            });
+	         	// closing .done function
+				});
 
-	             $('#aft').click(function() {
-	            	displayToD([4, 12, 20]);
-	            });
+			// closing execute function
+	        };
 
-	             $('#eve').click(function() {
-	            	displayToD([6, 14, 22]);
-	            });
+	        var lat = "29.424122";
+	        var lon = "-98.493628";
+	        execute();
 
-         	// closing .done function
-			});
+	        // longitude and latitude inputs
+
+			$("#submit").click(onSubmitLatLon);
+
+			$("cityInput").click(function(){
+				geocodeAddress();
+			})
+		
+			// time of day toggle buttons
+
+            $('#morn').click(function() {
+            	displayToD([2, 10, 18]);
+
+            });
+
+             $('#aft').click(function() {
+            	displayToD([4, 12, 20]);
+            });
+
+             $('#eve').click(function() {
+            	displayToD([6, 14, 22]);
+            });
+
 		// closing IFFE statement
 		}());
 

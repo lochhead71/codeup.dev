@@ -16,6 +16,8 @@ body {
 	width: 100px;
 	height: 40px;
 	border-radius: 8px;
+	border-top-color: #ccd9ff;
+	border-bottom-color: #001a66; 
 	font-family: 'Oswald', sans-serif;
 	font-weight: 300px;
 	font-size: 1.0em;
@@ -37,6 +39,8 @@ body {
 	padding: 10px;
 	margin: 10px 100px;
 	border-radius: 16px;
+	border-top-color: #ccd9ff;
+	border-bottom-color: #001a66; 
 	font-weight: 300px;
 }
 
@@ -48,6 +52,7 @@ body {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	margin-top: 0px;
 }
 
 .coordinates > h2 {
@@ -63,15 +68,28 @@ body {
 	padding: 4px;
 	margin-left: 12px;
 	width: 60px;
-	height: 36px;
+	height: 32px;
 	border-radius: 6px;
 	font-family: 'Oswald', sans-serif;
 	font-weight: 300px;
-	font-size: 1.0em;
+	font-size: 0.8em;
 	color: white;
 }
 
-#long, #lat {
+#submitCity {
+	background-color: #4d79ff;
+	padding: 4px;
+	margin-left: 12px;
+	width: 60px;
+	height: 32px;
+	border-radius: 6px;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300px;
+	font-size: 0.8em;
+	color: white;
+}
+
+#long, #lat, #city {
 	height: 24px;
 	margin: 0px 15px;
 }
