@@ -1,43 +1,43 @@
 <?php
 
-$author1 = [
-	'first_name' => 'Christopher',
-	'last_name' => 'Buckley'
-];
-
-$author2 = [
-	'first_name' => 'Tom',
-	'last_name' => 'Robbins'
-];
-
-$author3 = [
-	'first_name' => 'Gregory',
-	'last_name' => 'Maguire'
-];
-
 $book1 = [
 	'title' => 'Little Green Men',
-	'author' => $author1
+	'author' => [
+		'first_name' => 'Christopher',
+		'last_name' => 'Buckley'
+	]
 ];
 
 $book2 = [
 	'title' => 'Thank You For Smoking',
-	'author' => $author1
+	'author' => [
+		'first_name' => 'Christopher',
+		'last_name' => 'Buckley'
+	]
 ];
 
 $book3 = [
 	'title' => 'Skinny Legs and All',
-	'author' => $author2
+	'author' => [
+		'first_name' => 'Tom',
+		'last_name' => 'Robbins'
+	]
 ];
 
 $book4 = [
 	'title' => 'Still Life with Woodpecker',
-	'author' => $author2
+	'author' => [
+		'first_name' => 'Tom',
+		'last_name' => 'Robbins'
+	]
 ];
 
 $book5 = [
 	'title' => 'Wicked',
-	'author' => $author3
+	'author' => [
+		'first_name' => 'Gregory',
+		'last_name' => 'Maguire'
+	]
 ];
 
 $books = [
