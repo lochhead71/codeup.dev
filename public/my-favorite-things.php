@@ -17,6 +17,7 @@ extract(pageController());
 	<meta charset="UTF-8">
 	<title>My Favorite Things</title>
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
 	<style>
 
@@ -25,6 +26,10 @@ extract(pageController());
 			font-family: 'Roboto', sans-serif;
 			color:steelblue;
 			font-size: 1.5em;
+		}
+
+		h1 {
+			font-family: 'Lobster', cursive;
 		}
 
 		table {

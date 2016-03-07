@@ -1,7 +1,7 @@
 <?php
 
 function pageController() {
-	if (! isset( $_GET['counter'] )) {
+	if (! isset( $_GET['counter'])) {
 		$_GET['counter'] = 0;
 	}
 	return $_GET;
