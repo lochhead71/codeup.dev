@@ -1,14 +1,22 @@
 <?php
 
-$randoAdj = [ 'happy', 'perky', 'sleepy', 'snarky', 'woozy', 'fuzzy', 'funky', 'sulky', 'fizzy', 'loopy'];
-$randoName = [ 'Jerry', 'Bobby', 'Phil', 'Bill', 'Mickey', 'Pigpen', 'Tom', 'Keith', 'Donna', 'Brent'];
 
-function ServerNameGenerator($var1, $var2) {
-	$index1 = mt_rand(0, count($var1)-1);
-	$index2 = mt_rand(0, count($var2)-1);
-	$message = $var1[$index1] . "_" . $var2[$index2];
-	return $message;
-}
+	function ServerNameGenerator($var1, $var2) {
+		$index1 = mt_rand(0, count($var1)-1);
+		$index2 = mt_rand(0, count($var2)-1);
+		$message = $var1[$index1] . "_" . $var2[$index2];
+		return $message;
+	}
+
+	function pageController() {
+		$randoAdj = [ 'happy', 'perky', 'sleepy', 'snarky', 'woozy', 'fuzzy', 'funky', 'sulky', 'fizzy', 'loopy'];
+		$randoName = [ 'Jerry', 'Bobby', 'Phil', 'Bill', 'Mickey', 'Pigpen', 'Tom', 'Keith', 'Donna', 'Brent'];
+		$data = [];
+		$data['message'] = ServerNameGenerator($randoAdj, $randoName);
+		return $data;
+	}
+
+	extract(pageController());
 
 ?>
 
@@ -42,11 +50,8 @@ function ServerNameGenerator($var1, $var2) {
 </head>
 <body>
 
-	<h2 class="RandoName"><?= ServerNameGenerator($randoAdj, $randoName); ?></h2>
+	<h2 class="RandoName"><?= $message; ?></h2>
 
-	<script>
 
-		
-	</script>	
 </body>
 </html>

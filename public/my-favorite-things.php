@@ -1,6 +1,13 @@
 <?php
 
-$favThings = ['guitar', 'grill tongs', 'iPhone 6s', 'Apple MacBookPro', 'Penguin shoes'];
+function pageController() {
+	$favThings = ['guitar', 'grill tongs', 'iPhone 6s', 'Apple MacBookPro', 'Penguin shoes'];
+	$data = [];
+	$data['favThings'] = $favThings;
+	return $data;
+}
+
+extract(pageController());
 
 ?>
 
