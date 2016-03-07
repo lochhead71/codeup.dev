@@ -42,7 +42,7 @@ function ServerNameGenerator($var1, $var2) {
 </head>
 <body>
 
-	<h2 class="RandoName"><?php echo ServerNameGenerator($randoAdj, $randoName); ?></h2>
+	<h2 class="RandoName"><?= ServerNameGenerator($randoAdj, $randoName); ?></h2>
 
 	<script>
 
