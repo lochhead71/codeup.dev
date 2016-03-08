@@ -2,9 +2,9 @@
 
 	session_start();
 
-	$userLogin = isset($_SESSION['LOGGED_IN_USER']) ? $_SESSION['LOGGED_IN_USER'] : '';
+	$username = isset($_SESSION['LOGGED_IN_USER']) ? $_SESSION['LOGGED_IN_USER'] : '';
 
-	if (!isset($_SESSION['LOGGED_IN_USER'] || isset($_SESSION['LOGGED_IN_USER'] == "") {
+	if (!isset($_SESSION['LOGGED_IN_USER']) || $_SESSION['LOGGED_IN_USER'] == "") {
 		header('location: /login.php');
 		die();
 	}

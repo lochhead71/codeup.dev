@@ -5,11 +5,11 @@ session_start();
 function clearSession() {
     session_unset();
     session_regenerate_id(true);
-    header('location: /login.php');
-	die();
 }
 
-   clearSession();
+clearSession();
+header('location: /login.php');
+die();
 
 ?>
 
