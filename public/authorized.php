@@ -2,10 +2,9 @@
 
 	session_start();
 
-	$username = 'Bob Boberson';
-	$password = 'yippeeskippy';
+	$userLogin = isset($_SESSION['LOGGED_IN_USER']) ? $_SESSION['LOGGED_IN_USER'] : '';
 
-	if ($_SESSION['logged_in_user'] != $username) {
+	if (!isset($_SESSION['LOGGED_IN_USER'] || isset($_SESSION['LOGGED_IN_USER'] == "") {
 		header('location: /login.php');
 		die();
 	}
@@ -21,5 +20,6 @@
 <body>
 	<h1>Authorized</h1>
 	<p>Welcome, <?=$username?>.</p>
+	<a href="/logout.php">Log Out</a>
 </body>
 </html>
