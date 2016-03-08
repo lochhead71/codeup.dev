@@ -1,5 +1,9 @@
 <?php
 
+	session_start();
+
+	$userLogin = isset($_SESSION['logged_in_user']) ? $_SESSION['logged_in_user'] : false;
+
 	$username = 'Bob Boberson';
 	$password = 'yippeeskippy';
 
@@ -7,6 +11,7 @@
 	$attemptedPassword = isset($_POST['password']) ? $_POST['password'] : '';
 
 	if ($attemptedUserName == $username && $attemptedPassword == $password) {
+		$_SESSION['logged_in_user'] = true;
 		header('location: /authorized.php');
 		die();
 	} elseif ($attemptedUserName != '' || $attemptedPassword != '') {
