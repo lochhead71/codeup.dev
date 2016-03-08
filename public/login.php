@@ -7,9 +7,11 @@
 	$attemptedPassword = isset($_POST['password']) ? $_POST['password'] : '';
 
 	if ($attemptedUserName == $username && $attemptedPassword == $password) {
-		echo 'You have successfully logged in!';
+		header('location: /authorized.php');
+		die();
+	} elseif ($attemptedUserName != '' || $attemptedPassword != '') {
+		echo 'Those are not valid credetials!';
 	}
-
 ?>
 
 
