@@ -1,5 +1,15 @@
 <?php
 
+	session_start();
+
+	$username = 'Bob Boberson';
+	$password = 'yippeeskippy';
+
+	if ($_SESSION['logged_in_user'] != $username) {
+		header('location: /login.php');
+		die();
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -10,5 +20,6 @@
 </head>
 <body>
 	<h1>Authorized</h1>
+	<p>Welcome, <?=$username?>.</p>
 </body>
 </html>
