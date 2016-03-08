@@ -24,6 +24,7 @@ extract(pageController());
 			background-color: gainsboro;
 			font-family: 'Permanent Marker', cursive;
 			font-size: 1.5em;
+			padding: 30px;
 		}
 
 		a {
@@ -42,6 +43,17 @@ extract(pageController());
 	<h3><?= 'It\'s a ' . $status; ?></h3>
 
 	<a href="/pong.php?counter=<?=$counter+1;?> & status=HIT ">HIT</a>
-	<a href="/pong.php?counter=0&status=MISS">MISS</a>	
+	<a href="/ping.php?counter=0&status=MISS" id="miss">MISS</a>
+	<img src="/img/Forrest_Paddle.png" id="pcubed" alt="Ping Pong Paddle">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+	<script>
+		$(#miss).click(function() {
+			$(#pcubed).hide();
+			$(#splat).show();
+		}
+	</script>
+
 </body>
 </html>
