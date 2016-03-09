@@ -1,12 +1,21 @@
 <?php
 
-function pageController() {
-	if (! isset( $_GET['counter'] ) && ! isset( $_GET['status'])) {
-		$_GET['counter'] = 0;
-		$_GET['status'] = "New Game";
-	}
+require 'functions.php';
 
-	return $_GET;
+function pageController() {
+	if (!inputHas('counter') && !inputHas('status')) {
+		$counter = 0;
+		$status = 'new game';
+	} else {
+		$counter = inputGet('counter');
+		$status = inputGet('status');
+	}
+	$data = [
+		'counter' => $counter,
+		'status' => $status
+		];
+
+	return $data;
 }
 
 extract(pageController());
@@ -44,16 +53,7 @@ extract(pageController());
 
 	<a href="/pong.php?counter=<?=$counter+1;?> & status=HIT ">HIT</a>
 	<a href="/ping.php?counter=0&status=MISS" id="miss">MISS</a>
-	<img src="/img/Forrest_Paddle.png" id="pcubed" alt="Ping Pong Paddle">
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-	<script>
-		$(#miss).click(function() {
-			$(#pcubed).hide();
-			$(#splat).show();
-		}
-	</script>
+	<img src="/img/Forrest_Paddle.png" id="pcubed" alt="Ping Pong Paddle">  
 
 </body>
 </html>

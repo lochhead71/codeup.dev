@@ -1,15 +1,24 @@
 <?php
 
-	require_once 'functions.php';
+require 'functions.php';
 
-	function pageController() {
-		if (! isset( $_GET['counter'] )) {
-			$_GET['counter'] = 0;
-		}
-		return $_GET;
+function pageController() {
+	if (!inputHas('counter') && !inputHas('status')) {
+		$counter = 0;
+		$status = 'new game';
+	} else {
+		$counter = inputGet('counter');
+		$status = inputGet('status');
 	}
+	$data = [
+		'counter' => $counter,
+		'status' => $status
+		];
 
-	extract(pageController());
+	return $data;
+}
+
+extract(pageController());
 
 ?>
 
