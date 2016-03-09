@@ -1,13 +1,15 @@
 <?php
 
-function pageController() {
-	if (! isset( $_GET['counter'] )) {
-		$_GET['counter'] = 0;
-	}
-	return $_GET;
-}
+	require_once 'functions.php';
 
-extract(pageController());
+	function pageController() {
+		if (! isset( $_GET['counter'] )) {
+			$_GET['counter'] = 0;
+		}
+		return $_GET;
+	}
+
+	extract(pageController());
 
 ?>
 

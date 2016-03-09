@@ -1,19 +1,19 @@
 <?php
 
+	require_once 'functions.php';
 	session_start();
 
-	$userLogin = isset($_SESSION['LOGGED_IN_USER']) ? $_SESSION['LOGGED_IN_USER'] : '';
-
+	// $userLogin = inputGet('LOGGED_IN_USER');
 	$username = 'Bob Boberson';
 	$password = 'yippeeskippy';
 
-	if (isset($_SESSION['LOGGED_IN_USER']) && $_SESSION['LOGGED_IN_USER'] != "") {
+	if (inputHas('LOGGED_IN_USER')) {
 		header('location: /authorized.php');
 		die();
 	}
-		
-	$attemptedUserName = isset($_POST['username']) ? $_POST['username'] : '';
-	$attemptedPassword = isset($_POST['password']) ? $_POST['password'] : '';
+
+	$attemptedUserName = inputGet('username');
+	$attemptedPassword = inputGet('password');
 
 	if ($attemptedUserName == $username && $attemptedPassword == $password) {
 		$_SESSION['LOGGED_IN_USER'] = $username;
@@ -22,8 +22,8 @@
 	} elseif ($attemptedUserName != '' || $attemptedPassword != '') {
 		echo 'Those are not valid credetials!';
 	}
-?>
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,12 +36,13 @@
 	<hr><br>
 	<form method="POST">
 		<label for="username">User Name</label>
-		<input type="text" name="username">
+		<input type="text" name="username" value="<?php escape('username'); ?>">
 		<br>
 		<label for="password"> Password</label>
-		<input type="password" name="password">
+		<input type="password" name="password" value="<?php escape('password'); ?>">
+		<br><br>
 		<input type="submit">
-		<br>
+		<br><br>
 	</form>
 	<hr>
 	

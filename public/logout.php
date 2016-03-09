@@ -1,15 +1,17 @@
 <?php
 
-session_start();
+	require_once 'functions.php';
 
-function clearSession() {
-    session_unset();
-    session_regenerate_id(true);
-}
+	session_start();
 
-clearSession();
-header('location: /login.php');
-die();
+	function clearSession() {
+	    session_unset();
+	    session_regenerate_id(true);
+	}
+
+	clearSession();
+	header('location: /login.php');
+	die();
 
 ?>
 
