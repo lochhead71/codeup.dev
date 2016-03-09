@@ -15,5 +15,8 @@
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore delectus, atque inventore minus consequuntur animi modi aperiam maiores aut sit hic! Inventore voluptates nihil cum, reiciendis saepe. Cumque, ipsam, quo!</p>		
 	</main>
 	<?php include 'footer.php'; ?>
+
+	<script src="/js/jquery-1.12.0.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
