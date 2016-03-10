@@ -1,19 +1,27 @@
 <?php
 
-require 'functions.php';
+require_once '../Input.php';
 
 function pageController() {
-	if (!inputHas('counter') && !inputHas('status')) {
+	if (!Input::has('counter') && !Input::has('status')) {
 		$counter = 0;
 		$status = 'new game';
 	} else {
-		$counter = inputGet('counter');
-		$status = inputGet('status');
+		$counter = Input::get('counter');
+		$status = Input::get('status');
 	}
 	$data = [
 		'counter' => $counter,
 		'status' => $status
 		];
+
+	if (Input::get('status') == 'MISS') {
+		$image = '/img/Splat_Paddle.png';
+	} else {
+		$image = '/img/Forrest_Paddle.png';
+	}
+
+	$data['image'] = $image;
 
 	return $data;
 }
@@ -52,19 +60,9 @@ extract(pageController());
 	<h2 id="counter">Number of Hits: <?=$counter?></h2>
 	<h3><?= 'It\'s a ' . $_GET['status']; ?></h3>
 
-
-	<img src="/img/Forrest_Paddle.png" id="pcubed" alt="Ping Pong Paddle">
+	<img src="<?php echo $image ?>" alt="Ping Pong Paddle">
 	<a href="/ping.php?counter=<?=$counter+1;?>&status=HIT">HIT</a>
-	<a href="/ping.php?counter=0&status=MISS" id="miss">MISS</a>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-	<script>
-		$(#miss).click(function() {
-			$(#pcubed).hide();
-			$(#splat).show();
-		}
-	</script>
+	<a href="/ping.php?counter=0&status=MISS">MISS</a>
 	
 </body>
 </html>
