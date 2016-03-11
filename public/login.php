@@ -1,27 +1,34 @@
 <?php
 
-	require_once 'functions.php';
 	session_start();
 
-	// $userLogin = inputGet('LOGGED_IN_USER');
-	$username = 'Bob Boberson';
-	$password = 'yippeeskippy';
+	require_once '../Auth.php';
+	require_once '../Input.php';
+	require_once 'functions.php';
 
-	if (inputHas('LOGGED_IN_USER')) {
-		header('location: /authorized.php');
-		die();
-	}
+	function pageController()
+	{
+		if (Auth::check())
+		{
+			header('location: /authorized.php');
+			die();
+		}
 
-	$attemptedUserName = inputGet('username');
-	$attemptedPassword = inputGet('password');
+		if (Input::has('username') && Input::has('password'))
+		{
+			$username = Input::get('username');
+			$password = Input::get('password');
+			if (Auth::attempt($username, $password)) {
+				Auth::user();
+				header('location: /authorized.php');
+				die();
+			} else {
+				echo 'Those are not valid credetials!';
+			}
+		}
+	} // close pageController
 
-	if ($attemptedUserName == $username && $attemptedPassword == $password) {
-		$_SESSION['LOGGED_IN_USER'] = $username;
-		header('location: /authorized.php');
-		die();
-	} elseif ($attemptedUserName != '' || $attemptedPassword != '') {
-		echo 'Those are not valid credetials!';
-	}
+	pageController();
 
 ?>
 

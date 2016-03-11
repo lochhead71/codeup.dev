@@ -24,12 +24,8 @@ class Log
 	}
 
 	
-	public function __construct($prefix)
+	public function __construct($prefix = 'log')
 	{
-		if ($prefix == '')
-		{
-			$prefix = 'log';
-		}
 		$this->filename = $prefix . "-" . date('Y-m-d') . ".log";
 		$this->handle = fopen($this->filename, 'a');
 	}

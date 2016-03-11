@@ -1,15 +1,11 @@
 <?php
 
-	require_once 'functions.php';
+	require_once '../Auth.php';
+	require_once '../Input.php';
 
 	session_start();
 
-	function clearSession() {
-	    session_unset();
-	    session_regenerate_id(true);
-	}
-
-	clearSession();
+	Auth::logout();
 	header('location: /login.php');
 	die();
 
