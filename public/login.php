@@ -23,7 +23,7 @@
 				header('location: /authorized.php');
 				die();
 			} else {
-				echo 'Those are not valid credetials!';
+				echo 'Those are not valid credentials!';
 			}
 		}
 	} // close pageController
@@ -37,21 +37,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login Page</title>
+	<link rel="stylesheet" href="/css/basic.css">
 </head>
 <body>
 
-	<hr><br>
 	<form method="POST">
 		<label for="username">User Name</label>
-		<input type="text" name="username" value="<?php escape('username'); ?>">
-		<br>
+		<input type="text" name="username" value="<?php escape('username'); ?>"><br>
 		<label for="password"> Password</label>
-		<input type="password" name="password" value="<?php escape('password'); ?>">
-		<br><br>
-		<input type="submit">
-		<br><br>
+		<input type="password" name="password" value="<?php escape('password'); ?>"><br>
+		<input class = "button" type="submit">
 	</form>
-	<hr>
 	
 </body>
 </html>
