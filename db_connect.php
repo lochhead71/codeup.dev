@@ -1,11 +1,14 @@
 <?php
 
-define('PASSWORD', 'vagrant');
+define('DB_HOST', '127.0.0.1');
+define('DB_NAME', 'employees');
+define('DB_USER', 'vagrant');
+define('DB_PASS', 'vagrant');
 
 $dbc = new PDO(
-	'mysql:host=127.0.0.1;dbname=employees',
-	'vagrant',
-	PASSWORD
+	'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME,
+	DB_USER,
+	DB_PASS
 );
 
 $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
