@@ -17,7 +17,7 @@ $migration = <<<QUERY
 	CREATE TABLE national_parks (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     name  CHAR(100) NOT NULL,
-	location CHAR(100) NOT NULL,
+	location CHAR(50) NOT NULL,
 	date_established DATE NOT NULL,
 	area_in_acres DOUBLE NOT NULL,
     PRIMARY KEY (id)
