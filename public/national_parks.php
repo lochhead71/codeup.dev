@@ -2,9 +2,11 @@
 
 require_once '../default_pw.php';
 require_once '../db_connect.php';
-	
-$offset = 0;
+require_once '../Input.php';
 
+$page = Input::has('page_num') ? Input::get('page_num') : 1;
+$offset = $page * 4 - 4;
+	
 $stmt = $dbc->query("SELECT * FROM national_parks LIMIT 4 OFFSET {$offset}");
 
 $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
