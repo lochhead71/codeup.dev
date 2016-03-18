@@ -1,13 +1,11 @@
 <?php
 
-define('DB_HOST', '127.0.0.1');
-define('DB_NAME', 'parks_db');
-define('DB_USER', 'parks_user');
-define('DB_PASS', 'password');
-
+require_once '../default_pw.php';
 require_once '../db_connect.php';
+	
+$offset = 0;
 
-$stmt = $dbc->query('SELECT * FROM national_parks');
+$stmt = $dbc->query("SELECT * FROM national_parks LIMIT 4 OFFSET {$offset}");
 
 $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
