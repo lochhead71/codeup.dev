@@ -25,7 +25,10 @@ $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		<h3><?= $park['location'] ?></h3>
 		<p><strong>Date Established: </strong><?= $park['date_established'] ?></p>
 		<p><strong>Total acreage: </strong><?= $park['area_in_acres'] ?></p><br>
-		<?php endforeach; ?>
+	<?php endforeach; ?>
+
+	<a href="national_parks.php?page_num=<?=$page+1 ?>">Next Page</a>
+	<a href="national_parks.php?page_num=<?=$page-1 ?>">Previous Page</a>
 	
 </body>
 </html>
