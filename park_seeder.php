@@ -1,5 +1,7 @@
 <?php
 
+// code to connect to the database
+
 define('DB_HOST', '127.0.0.1');
 define('DB_NAME', 'parks_db');
 define('DB_USER', 'parks_user');
@@ -7,7 +9,7 @@ define('DB_PASS', 'password');
 
 require 'db_connect.php';
 
-echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
+// PHP multidimensional array for iteratation
 
 $parks = array(
 	array ('name'=>'Acadia', 'location'=>'Maine', 'date_established'=>'1919-02-26', 'area_in_acres'=>47389.67),
@@ -32,11 +34,15 @@ $parks = array(
 	array ('name'=>'Gates of the Arctic', 'location'=>'Alaska', 'date_established'=>'1980-12-02', 'area_in_acres'=>7523897.74),
 );
 
+// convert array into correct string format for SQL
+
 $sql = "";
 foreach($parks as $park) {
 	$sql .= "('{$park['name']}', '{$park['location']}', '{$park['date_established']}', {$park['area_in_acres']}),";
 }
 $sql = rtrim($sql,',');
+
+// SQL code for seeding db
 
 $parkSeeder = <<<QUERY
 	USE parks_db;
@@ -47,4 +53,10 @@ $parkSeeder = <<<QUERY
 	VALUES $sql
 QUERY;
 
+// execute command to interface with SQL
+
 $dbc->exec($parkSeeder);
+
+// default confirmation message that code ran
+
+echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
