@@ -33,6 +33,7 @@ $count = $no_of_records->fetchColumn();
 	<meta charset="UTF-8">
 	<title>U.S. National Parks</title>
 	<link rel="stylesheet" href="/css/natty_park.css">
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 	<link href='https://fonts.googleapis.com/css?family=Delius+Swash+Caps|Amaranth:400,700italic|Work+Sans:300,500,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
