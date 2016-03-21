@@ -2,7 +2,7 @@
 
 // code to connect to the database
 
-require_once '../default_pw.php';
+require_once 'default_pw.php';
 require 'db_connect.php';
 
 // PHP multidimensional array for iteratation

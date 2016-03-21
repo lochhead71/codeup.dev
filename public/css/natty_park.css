@@ -36,6 +36,7 @@ a {
 	color: white;
 	font-weight: 500;
 	padding: 8px;
+	margin-top: 20px;
 	border-radius: 6px;
 	background-color: #0B3B17;
 }
@@ -63,9 +64,15 @@ a:hover {
 }
 
 .image{
-	width: 320px;
-	height: 200px;
+	width: 300px;
+	height: 150px;
 	border: 3px solid #5F9EA0;
 	border-radius: 8px;
 	margin: 0px 0px 12px 0px;
+}
+
+.description {
+	font-size: 0.8em;
+	font-weight: 300;
+	margin-bottom: 18px;
 }

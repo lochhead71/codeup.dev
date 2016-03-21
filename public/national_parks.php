@@ -7,13 +7,19 @@ require_once '../Input.php';
 // defining global variables
 
 $page = Input::has('page_num') ? Input::get('page_num') : 1;
-$offset = $page * 4 - 4;
+$limit = 4;
+$offset = ($page * $limit) - $limit;
 
 // connecting to the database
-	
-$stmt = $dbc->query("SELECT * FROM national_parks LIMIT 4 OFFSET {$offset}");
 
-$parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$query = 'SELECT * FROM national_parks LIMIT :limit OFFSET :offset';
+
+$parks = $dbc->prepare($query);
+
+$parks->bindValue(':limit', $limit, PDO::PARAM_INT);
+$parks->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+$parks->execute();
 
 $no_of_records = $dbc->query("SELECT count(id) FROM national_parks");
 
@@ -45,15 +51,16 @@ $count = $no_of_records->fetchColumn();
 			<p><strong>Date Established: </strong><?= $park['date_established'] ?></p>
 			<p><strong>Total acreage: </strong><?= $park['area_in_acres'] ?></p><br>
 			<img src="<?= $park['image_url'] ?>" alt="" class='image'>
+			<p class='description'><?= $park['description'] ?></p>
 		<?php endforeach; ?>
 	</div>
 
 	<!-- Added some logic to determine whether or not to show the next and/or previous page links. -->
-	
-	<?php if ($page < $count/4) { ?>
+
+	<?php if ($page < $count/$limit) { ?>
 		<a href="national_parks.php?page_num=<?=$page+1 ?>">Next Page</a>
 	<?php } ?>
-	<?php if ($page > 1) { ?>
+	<?php if ($page > $count/$count) { ?>
 		<a href="?page_num=<?=$page-1 ?>">Previous Page</a>
 	<?php } ?>
 	
