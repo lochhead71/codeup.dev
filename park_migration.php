@@ -20,6 +20,7 @@ $migration = <<<QUERY
 	location CHAR(50) NOT NULL,
 	date_established DATE NOT NULL,
 	area_in_acres DOUBLE NOT NULL,
+	image_url VARCHAR(200),
     PRIMARY KEY (id)
 )
 QUERY;

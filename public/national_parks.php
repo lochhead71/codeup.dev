@@ -37,6 +37,7 @@ $count = $no_of_records->fetchColumn();
 				<h3 class='parkLocation'><?= $park['location'] ?></h3>
 				<p><strong>Date Established: </strong><?= $park['date_established'] ?></p>
 				<p><strong>Total acreage: </strong><?= $park['area_in_acres'] ?></p><br>
+				<img src="<?= $park['image_url'] ?>" alt="" class='image'>
 			<?php endforeach; ?>
 		</div>
 		<h3></h3>
@@ -45,7 +46,7 @@ $count = $no_of_records->fetchColumn();
 	<?php if ($page < $count/4) { ?>
 		<a href="national_parks.php?page_num=<?=$page+1 ?>">Next Page</a>
 	<?php } ?>
-	<?php if ($page > $count/$count) { ?>
+	<?php if ($page > 1) { ?>
 		<a href="?page_num=<?=$page-1 ?>">Previous Page</a>
 	<?php } ?>
 	
