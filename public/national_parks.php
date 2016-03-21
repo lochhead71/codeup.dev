@@ -4,8 +4,12 @@ require_once '../default_pw.php';
 require_once '../db_connect.php';
 require_once '../Input.php';
 
+// defining global variables
+
 $page = Input::has('page_num') ? Input::get('page_num') : 1;
 $offset = $page * 4 - 4;
+
+// connecting to the database
 	
 $stmt = $dbc->query("SELECT * FROM national_parks LIMIT 4 OFFSET {$offset}");
 
@@ -31,18 +35,21 @@ $count = $no_of_records->fetchColumn();
 			<h1>America's National Parks</h1>
 		</div>
 	</header>
-		<div class='listings'>
-			<?php foreach ($parks as $park): ?>
-				<h2 class='parkName'><?= $park['name'] ?></h2>
-				<h3 class='parkLocation'><?= $park['location'] ?></h3>
-				<p><strong>Date Established: </strong><?= $park['date_established'] ?></p>
-				<p><strong>Total acreage: </strong><?= $park['area_in_acres'] ?></p><br>
-				<img src="<?= $park['image_url'] ?>" alt="" class='image'>
-			<?php endforeach; ?>
-		</div>
-		<h3></h3>
 
-	<!-- Add some logic to determine whether or not to show the next and/or previous page links. -->
+	<!-- interating across the database to build HTML objects -->
+
+	<div class='listings'>
+		<?php foreach ($parks as $park): ?>
+			<h2 class='parkName'><?= $park['name'] ?></h2>
+			<h3 class='parkLocation'><?= $park['location'] ?></h3>
+			<p><strong>Date Established: </strong><?= $park['date_established'] ?></p>
+			<p><strong>Total acreage: </strong><?= $park['area_in_acres'] ?></p><br>
+			<img src="<?= $park['image_url'] ?>" alt="" class='image'>
+		<?php endforeach; ?>
+	</div>
+
+	<!-- Added some logic to determine whether or not to show the next and/or previous page links. -->
+	
 	<?php if ($page < $count/4) { ?>
 		<a href="national_parks.php?page_num=<?=$page+1 ?>">Next Page</a>
 	<?php } ?>
