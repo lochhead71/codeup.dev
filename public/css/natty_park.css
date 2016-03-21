@@ -1,0 +1,63 @@
+body:before {
+	padding: 0px;
+}
+
+body{
+	background-image: url('/img/new_year_background.png');
+}
+
+header {
+	margin: 0px;
+}
+
+header > div {
+	background-image: url("/img/yosemite.png");
+	background-repeat: no-repeat;
+	background-color: #0B3B17;
+	margin:	0px;
+	height: 100px;
+	padding: 12px;
+	margin: 0px 0px 18px 0px;
+	color: white;
+	text-align: center;
+	font-size: 1.5em;
+	font-family: 'Delius Swash Caps', cursive;
+	text-shadow: 0px 0px 18px #0B3B17;
+}
+
+p {
+	font-family: 'Work Sans', sans-serif;
+	margin: 2px 12px;
+}
+
+a {
+	font-family: 'Work Sans', sans-serif;
+	text-decoration: none;
+	color: white;
+	font-weight: 500;
+	padding: 8px;
+	border-radius: 6px;
+	background-color: #0B3B17;
+}
+
+a:hover {
+	background-color: #5F9EA0;
+}
+
+.listings {
+	-webkit-column-count: 2;
+	padding: 0px 10px 10px 10px;
+}
+
+.parkName {
+	font-family: 'Amaranth', sans-serif;
+	color: #0B3B17;
+	font-size: 2em;
+	margin: 0px 12px;
+}
+
+.parkLocation {
+	font-family: 'Work Sans', sans-serif;
+	color: #5F9EA0;
+	margin: 2px 12px;
+}
