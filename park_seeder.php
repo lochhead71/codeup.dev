@@ -2,60 +2,48 @@
 
 // code to connect to the database
 
-define('DB_HOST', '127.0.0.1');
-define('DB_NAME', 'parks_db');
-define('DB_USER', 'parks_user');
-define('DB_PASS', 'password');
-
+require_once '../default_pw.php';
 require 'db_connect.php';
 
 // PHP multidimensional array for iteratation
 
 $parks = array(
-	array ('name'=>'Acadia', 'location'=>'Maine', 'date_established'=>'1919-02-26', 'area_in_acres'=>47389.67, 'image_url'=>'/img/np_acadia.jpg'),
-	array ('name'=>'American Samoa', 'location'=>'American Samoa', 'date_established'=>'1988-10-31', 'area_in_acres'=>9000.00, 'image_url'=>'/img/np_AmSomoa.jpg'),
-	array ('name'=>'Arches', 'location'=>'Utah', 'date_established'=>'1929-04-12', 'area_in_acres'=>76518.98, 'image_url'=>'/img/np_arches.jpg'),
-	array ('name'=>'Badlands', 'location'=>'South Dakota', 'date_established'=>'1978-11-10', 'area_in_acres'=>242755.94, 'image_url'=>'/img/np_badlands.jpg'),
-	array ('name'=>'Big Bend', 'location'=>'Texas', 'date_established'=>'1944-06-12', 'area_in_acres'=>801163.21, 'image_url'=>'/img/np_BigBend.jpg'),
-	array ('name'=>'Biscayne', 'location'=>'Florida', 'date_established'=>'1980-06-28', 'area_in_acres'=>172924.07, 'image_url'=>'/img/np_biscayne.jpg'),
-	array ('name'=>'Black Canyon of the Gunnison', 'location'=>'Colorado', 'date_established'=>'1999-10-21', 'area_in_acres'=>32950.03, 'image_url'=>'/img/np_gunnison.jpg'),
-	array ('name'=>'Bryce Canyon', 'location'=>'Utah', 'date_established'=>'1928-02-25', 'area_in_acres'=>35835.08, 'image_url'=>'/img/np_BryceCanyon.jpg'),
-	array ('name'=>'Canyonlands', 'location'=>'Utah', 'date_established'=>'1964-09-12', 'area_in_acres'=>337597.83, 'image_url'=>'/img/np_canyonlands.jpg'),
-	array ('name'=>'Capitol Reef', 'location'=>'Utah', 'date_established'=>'1971-12-18', 'area_in_acres'=>241904.26, 'image_url'=>'/img/np_CapitolReef.JPG'),
-	array ('name'=>'Carlsbad Caverns', 'location'=>'New Mexico', 'date_established'=>'1930-05-14', 'area_in_acres'=>46766.45, 'image_url'=>'/img/np_carlsbad.jpg'),
-	array ('name'=>'Channel Islands', 'location'=>'California', 'date_established'=>'1980-03-05', 'area_in_acres'=>249561.00, 'image_url'=>'/img/np_ChannelIslands.jpg'),
-	array ('name'=>'Congaree', 'location'=>'South Carolina', 'date_established'=>'2003-11-10', 'area_in_acres'=>26545.86, 'image_url'=>'/img/np_congaree.jpg'),
-	array ('name'=>'Crater Lake', 'location'=>'Oregon', 'date_established'=>'1902-05-22', 'area_in_acres'=>183224.05, 'image_url'=>'/img/np_CraterLake.jpg'),
-	array ('name'=>'Cuyahoga Valley', 'location'=>'Ohio', 'date_established'=>'2000-10-11', 'area_in_acres'=>32860.73, 'image_url'=>'/img/np_cuyahoga.jpg'),
-	array ('name'=>'Death Valley', 'location'=>'California & Nevada', 'date_established'=>'1994-10-31', 'area_in_acres'=>3372401.96, 'image_url'=>'/img/np_DeathValley.jpg'),
-	array ('name'=>'Denali', 'location'=>'Alaska', 'date_established'=>'1917-02-26', 'area_in_acres'=>4740911.72, 'image_url'=>'/img/np_denali.jpg'),
-	array ('name'=>'Dry Tortugas', 'location'=>'Florida', 'date_established'=>'1992-10-26', 'area_in_acres'=>64701.22, 'image_url'=>'/img/np_DryTortugas.jpg'),
-	array ('name'=>'Everglades', 'location'=>'Florida', 'date_established'=>'1934-05-30', 'area_in_acres'=>1508537.90, 'image_url'=>'/img/np_everglades.jpg'),
-	array ('name'=>'Gates of the Arctic', 'location'=>'Alaska', 'date_established'=>'1980-12-02', 'area_in_acres'=>7523897.74, 'image_url'=>'/img/np_GatesArctic.jpg'),
+	array ('name'=>'Acadia', 'location'=>'Maine', 'date_established'=>'1919-02-26', 'area_in_acres'=>47389.67, 'image_url'=>'/img/np_acadia.jpg', 'description'=>'Covering most of Mount Desert Island and other coastal islands, Acadia features the tallest mountain on the Atlantic coast of the United States, granite peaks, ocean shoreline, woodlands, and lakes. There are freshwater, estuary, forest, and intertidal habitats.'),
+	array ('name'=>'American Samoa', 'location'=>'American Samoa', 'date_established'=>'1988-10-31', 'area_in_acres'=>9000.00, 'image_url'=>'/img/np_AmSomoa.jpg', 'description'=>'The southernmost national park is on three Samoan islands and protects coral reefs, rainforests, volcanic mountains, and white beaches. The area is also home to flying foxes, brown boobies, sea turtles, and 900 species of fish.'),
+	array ('name'=>'Arches', 'location'=>'Utah', 'date_established'=>'1929-04-12', 'area_in_acres'=>76518.98, 'image_url'=>'/img/np_arches.jpg', 'description'=>'1,284,767	This site features more than 2,000 natural sandstone arches, including the famous Delicate Arch. In a desert climate, millions of years of erosion have led to these structures, and the arid ground has life-sustaining soil crust and potholes, which serve as natural water-collecting basins. Other geologic formations are stone columns, spires, fins, and towers.'),
+	array ('name'=>'Badlands', 'location'=>'South Dakota', 'date_established'=>'1978-11-10', 'area_in_acres'=>242755.94, 'image_url'=>'/img/np_badlands.jpg', 'description'=>'The Badlands are a collection of buttes, pinnacles, spires, and grass prairies. It has the world\'s richest fossil beds from the Oligocene epoch, and the wildlife includes bison, bighorn sheep, black-footed ferrets, and swift foxes.'),
+	array ('name'=>'Big Bend', 'location'=>'Texas', 'date_established'=>'1944-06-12', 'area_in_acres'=>801163.21, 'image_url'=>'/img/np_BigBend.jpg', 'description'=>'Named for the prominent bend in the Rio Grande along the US–Mexico border, this park encompasses a large and remote part of the Chihuahuan Desert. Its main attraction is backcountry recreation in the arid Chisos Mountains and in canyons along the river. A wide variety of Cretaceous and Tertiary fossils as well as cultural artifacts of Native Americans also exist within its borders.'),
+	array ('name'=>'Biscayne', 'location'=>'Florida', 'date_established'=>'1980-06-28', 'area_in_acres'=>172924.07, 'image_url'=>'/img/np_biscayne.jpg', 'description'=>'Located in Biscayne Bay, this park at the north end of the Florida Keys has four interrelated marine ecosystems: mangrove forest, the Bay, the Keys, and coral reefs. Threatened animals include the West Indian manatee, American crocodile, various sea turtles, and peregrine falcon.'),
+	array ('name'=>'Black Canyon of the Gunnison', 'location'=>'Colorado', 'date_established'=>'1999-10-21', 'area_in_acres'=>32950.03, 'image_url'=>'/img/np_gunnison.jpg', 'description'=>'The park protects a quarter of the Gunnison River, which slices sheer canyon walls from dark Precambrian-era rock. The canyon features incredibly steep descriptionents, and is a popular site for river rafting and rock climbing. The deep, narrow canyon, made of gneiss and schist, is often in shadow and therefore appears black.'),
+	array ('name'=>'Bryce Canyon', 'location'=>'Utah', 'date_established'=>'1928-02-25', 'area_in_acres'=>35835.08, 'image_url'=>'/img/np_BryceCanyon.jpg', 'description'=>'Bryce Canyon is a giant geological amphitheater on the Paunsaugunt Plateau. The unique area has hundreds of tall sandstone hoodoos formed by erosion. The region was originally settled by Native Americans and later by Mormon pioneers.'),
+	array ('name'=>'Canyonlands', 'location'=>'Utah', 'date_established'=>'1964-09-12', 'area_in_acres'=>337597.83, 'image_url'=>'/img/np_canyonlands.jpg', 'description'=>'This landscape was eroded into a maze of canyons, buttes, and mesas by the combined efforts of the Colorado River, Green River, and their tributaries, which divide the park into three districts. There are rock pinnacles and other naturally sculpted rock formations, as well as artifacts from Ancient Pueblo peoples.'),
+	array ('name'=>'Capitol Reef', 'location'=>'Utah', 'date_established'=>'1971-12-18', 'area_in_acres'=>241904.26, 'image_url'=>'/img/np_CapitolReef.JPG', 'description'=>'The park\'s Waterpocket Fold is a 100-mile (160 km) monocline that exhibits the earth\'s diverse geologic layers. Other natural features are monoliths, sandstone domes, and cliffs shaped like the United States Capitol.'),
+	array ('name'=>'Carlsbad Caverns', 'location'=>'New Mexico', 'date_established'=>'1930-05-14', 'area_in_acres'=>46766.45, 'image_url'=>'/img/np_carlsbad.jpg', 'description'=>'Carlsbad Caverns has 117 caves, the longest of which is over 120 miles (190 km) long. The Big Room is almost 4,000 feet (1,200 m) long, and the caves are home to over 400,000 Mexican free-tailed bats and sixteen other species. Above ground are the Chihuahuan Desert and Rattlesnake Springs.'),
+	array ('name'=>'Channel Islands', 'location'=>'California', 'date_established'=>'1980-03-05', 'area_in_acres'=>249561.00, 'image_url'=>'/img/np_ChannelIslands.jpg', 'description'=>'Five of the eight Channel Islands are protected, and half of the park\'s area is underwater. The islands have a unique Mediterranean ecosystem originally settled by the Chumash people. They are home to over 2,000 species of land plants and animals, and 145 are unique to them, including the island fox. Professional ferry services offer transportation to the islands from the mainland'),
+	array ('name'=>'Congaree', 'location'=>'South Carolina', 'date_established'=>'2003-11-10', 'area_in_acres'=>26545.86, 'image_url'=>'/img/np_congaree.jpg', 'description'=>'On the Congaree River, this park is the largest portion of old-growth floodplain forest left in North America. Some of the trees are the tallest in the Eastern US. An elevated walkway called the Boardwalk Loop guides visitors through the swamp.'),
+	array ('name'=>'Crater Lake', 'location'=>'Oregon', 'date_established'=>'1902-05-22', 'area_in_acres'=>183224.05, 'image_url'=>'/img/np_CraterLake.jpg', 'description'=>'Crater Lake lies in the caldera of an ancient volcano called Mount Mazama that collapsed 7,700 years ago. It is the deepest lake in the United States and is famous for its vivid blue color and water clarity. There are two more recent volcanic islands in the lake, and, with no inlets or outlets, all water comes through precipitation.'),
+	array ('name'=>'Cuyahoga Valley', 'location'=>'Ohio', 'date_established'=>'2000-10-11', 'area_in_acres'=>32860.73, 'image_url'=>'/img/np_cuyahoga.jpg', 'description'=>'This park along the Cuyahoga River has waterfalls, hills, trails, and exhibits on early rural living. The Ohio and Erie Canal Towpath Trail follows the Ohio and Erie Canal, where mules towed canal boats. The park has numerous historic homes, bridges, and structures,[21] and also offers a scenic train ride.'),
+	array ('name'=>'Death Valley', 'location'=>'California & Nevada', 'date_established'=>'1994-10-31', 'area_in_acres'=>3372401.96, 'image_url'=>'/img/np_DeathValley.jpg', 'description'=>'Death Valley is the hottest, lowest, and driest place in the United States. Daytime temperatures have topped 130 °F (54 °C) and it is home to Badwater Basin, the lowest elevation in North America. A diversity of colorful canyons, desolate badlands, shifting sand dunes, sprawling mountains, and over 1000 species of plants populate this geologic graben. Additional points of interest include salt flats, historic mines, and springs.'),
+	array ('name'=>'Denali', 'location'=>'Alaska', 'date_established'=>'1917-02-26', 'area_in_acres'=>4740911.72, 'image_url'=>'/img/np_denali.jpg', 'description'=>'Centered around Denali, the tallest mountain in North America, Denali is serviced by a single road leading to Wonder Lake. Denali and other peaks of the Alaska Range are covered with long glaciers and boreal forest. Wildlife includes grizzly bears, Dall sheep, caribou, and gray wolves.'),
+	array ('name'=>'Dry Tortugas', 'location'=>'Florida', 'date_established'=>'1992-10-26', 'area_in_acres'=>64701.22, 'image_url'=>'/img/np_DryTortugas.jpg', 'description'=>'The islands of the Dry Tortugas, at the westernmost end of the Florida Keys, are the site of Fort Jefferson, a Civil War-era fort that is the largest masonry structure in the Western Hemisphere. With most of the park being remote ocean, it is home to undisturbed coral reefs and shipwrecks and is only accessible by plane or boat.'),
+	array ('name'=>'Everglades', 'location'=>'Florida', 'date_established'=>'1934-05-30', 'area_in_acres'=>1508537.90, 'image_url'=>'/img/np_everglades.jpg', 'description'=>'The Everglades are the largest subtropical wilderness in the United States. This mangrove ecosystem and marine estuary is home to 36 protected species, including the Florida panther, American crocodile, and West Indian manatee. Some areas have been drained and developed; restoration projects aim to restore the ecology.'),
+	array ('name'=>'Gates of the Arctic', 'location'=>'Alaska', 'date_established'=>'1980-12-02', 'area_in_acres'=>7523897.74, 'image_url'=>'/img/np_GatesArctic.jpg', 'description'=>'The country\'s northernmost park protects an expanse of pure wilderness in Alaska\'s Brooks Range and has no park facilities. The land is home to Alaska natives, who have relied on the land and caribou for 11,000 years.'),
 );
 
-// convert array into correct string format for SQL
+// convert array into correct data format for SQL
 
-$sql = "";
-foreach($parks as $park) {
-	$sql .= "('{$park['name']}', '{$park['location']}', '{$park['date_established']}', {$park['area_in_acres']}, '{$park['image_url']}'),";
+$stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, image_url, description) VALUES (:name, :location, :date_established, :area_in_acres, :image_url, :description)');
+
+foreach ($parks as $park) {
+    $stmt->bindValue(':name',  $park['name'],  PDO::PARAM_STR);
+    $stmt->bindValue(':location',  $park['location'],  PDO::PARAM_STR);
+    $stmt->bindValue(':date_established',  $park['date_established'],  PDO::PARAM_STR);
+    $stmt->bindValue(':area_in_acres',  $park['area_in_acres'],  PDO::PARAM_STR);
+    $stmt->bindValue(':image_url',  $park['image_url'],  PDO::PARAM_STR);
+    $stmt->bindValue(':description',  $park['description'],  PDO::PARAM_STR);
+
+    $stmt->execute();
 }
-$sql = rtrim($sql,',');
-
-// SQL code for seeding db
-
-$parkSeeder = <<<QUERY
-	TRUNCATE national_parks;
-
-	INSERT INTO national_parks (name, location, date_established, area_in_acres, image_url)
-	VALUES $sql
-QUERY;
-
-var_dump($parkSeeder);
-
-// execute command to interface with SQL
-
-$dbc->exec($parkSeeder);
 
 // default confirmation message that code ran
 
