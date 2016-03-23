@@ -1,10 +1,12 @@
-<?php
+<?php 
 
-class Model
+	class Model
 
 {
 	// Array to store our key/value attributes
 	private $attributes = [];
+
+    protected static $table;
 
     // Magic setter to populate $attributes array
     public function __set($name, $value)
@@ -24,6 +26,11 @@ class Model
         return null;
     }
 
+    public static function getTableName()
+    {
+        return static::$table;
+    }
+
 }
 
-?>
+ ?>
