@@ -4,8 +4,32 @@ class Log
 
 {
 
-	public $filename;
-	public $handle;
+	private $filename;
+	private $handle;
+	private $date;
+
+	public function __construct($prefix = 'log')
+	{
+		$this->date = date('Y-m-d')
+		$this->setFilename($prefix . "-" . $this->date . ".log");
+		$this->handle = fopen($this->filename, 'a');
+	}
+
+	protected function setFilename($string)
+	{
+    	if (is_string($string))
+    	{
+    		echo "Your prefix is not valid; you provided " . gettype($sring)".";
+    	} 
+    	else if (touch($this->filename) && is_writable($this->filename))
+		{
+	    	$this->filename = trim($string);
+		} 
+		else
+		{
+			echo "You do not have privelages for that file."
+		}
+	}
 
 	public function logMessage($logLevel, $message)
 	{
@@ -23,11 +47,9 @@ class Log
 		$this->logMessage("ERROR", $message);
 	}
 
-	
-	public function __construct($prefix = 'log')
+	public function displayFilename()
 	{
-		$this->filename = $prefix . "-" . date('Y-m-d') . ".log";
-		$this->handle = fopen($this->filename, 'a');
+		echo $this->filename . PHP_EOL;
 	}
 
 	public function __destruct()
