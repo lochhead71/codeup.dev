@@ -5,6 +5,6 @@ require_once 'User.php';
 
 $test = new User();
 
-var_dump (User::getTableName());
+echo User::getTableName();
 
 ?>
