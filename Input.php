@@ -28,6 +28,38 @@ class Input
         return $result;    
     }
 
+    public static function getString($key)
+    {
+        $value = self::get($key);
+        if (is_bool($value) || is_numeric($value) || is_resource($value) || is_array($value) || is_object($value))
+        {
+            throw new Exception('The input is not a string or is null.');
+        }
+        return $value;
+    }
+
+    public static function getNumber($key)
+    {
+        $value = self::get($key);
+        if (! is_numeric($value) || $value == null)
+        {
+           throw new Exception('This value is not a number or is null.');
+        }
+        return (float) $value;
+    }
+
+    public static function getDate($key)
+    {
+        $value = self::get($key);
+        $validDate = date_create($value);
+
+        if ($validDate)
+        {
+            return $value;
+        };
+        throw new Exception('The input provided is not a valid date format.');
+    }
+
     ///////////////////////////////////////////////////////////////////////////
     //                      DO NOT EDIT ANYTHING BELOW!!                     //
     // The Input class should not ever be instantiated, so we prevent the    //

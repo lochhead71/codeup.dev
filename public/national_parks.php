@@ -3,12 +3,11 @@
 require_once '../default_pw.php';
 require_once '../db_connect.php';
 require_once '../Input.php';
-require 'np_inputModal.php';
 
 // defining global variables
 
-$page = Input::has('page_num') ? Input::get('page_num') : 1;
-$limit = Input::has('input') ? Input::get('input') : 4;
+$page = Input::has('page_num') ? Input::getNumber('page_num') : 1;
+$limit = Input::has('input') ? Input::getNumber('input') : 4;
 $offset = ($page * $limit) - $limit;
 
 // connecting to the database
@@ -24,6 +23,8 @@ $parks = $parks->fetchAll(PDO::FETCH_ASSOC);
 $no_of_records = $dbc->query("SELECT count(id) FROM national_parks");
 
 $count = $no_of_records->fetchColumn();
+
+require 'np_inputModal.php';
 
 ?>
 
@@ -42,6 +43,10 @@ $count = $no_of_records->fetchColumn();
 			<button id='add'>Add a Park</button>
 		</div>
 	</header>
+
+	<div>
+		<?php foreach ($errors as $key => $value){echo "There was an error: " . $errors[$key] . PHP_EOL;} ?>
+	</div>
 
 	<!-- interating across the database to build HTML objects -->
 
